@@ -6,9 +6,7 @@ import { useCallback, useEffect, useRef, useState, type ReactNode } from "react"
 export type Review = {
   quote: string;
   name: string;
-  company: string;
   date: string; // ISO yyyy-mm-dd
-  location: string;
   rating: number;
 };
 
@@ -98,16 +96,10 @@ export function ReviewCarousel({ reviews, heading, trust }: Props) {
                 <p>“{r.quote}”</p>
               </blockquote>
               <figcaption className="mt-auto border-t border-line-light pt-4 font-display text-night">
-                <div className="flex justify-between gap-4">
-                  <span className="text-body-sm leading-7 font-bold tracking-[-0.03em]">{r.name}</span>
-                  <span className="text-right text-body-sm leading-7 font-bold tracking-[-0.03em]">
-                    {r.company}
-                  </span>
-                </div>
-                <div className="mt-0.5 flex justify-between gap-4 text-small tracking-[-0.03em]">
-                  <time dateTime={r.date}>{formatDate(r.date)}</time>
-                  <span className="text-right">{r.location}</span>
-                </div>
+                <span className="block text-body-sm leading-7 font-bold tracking-[-0.03em]">{r.name}</span>
+                <time dateTime={r.date} className="mt-0.5 block text-small tracking-[-0.03em]">
+                  {formatDate(r.date)}
+                </time>
               </figcaption>
             </figure>
           </li>

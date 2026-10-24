@@ -42,7 +42,7 @@ export function Hero() {
             Every missed call is a customer who might call your competitor next.
             Atlantis phone systems route every call to someone who can answer
             it, at the desk, on a cell phone or after hours. They’re installed
-            and supported by our local team since 1984.
+            and supported by the Atlantis team since 1984.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4 sm:gap-5 lg:mt-11">

@@ -3,7 +3,7 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   title: "Business Phone Systems in California",
   description:
-    "Atlantis installs and supports business phone systems across California. Answer every call at the desk, on a cell or after hours. Local team since 1984.",
+    "Atlantis installs and supports business phone systems across California. Answer every call at the desk, on a cell or after hours. Atlantis team since 1984.",
   foundingYear: 1984,
   region: "California",
 };

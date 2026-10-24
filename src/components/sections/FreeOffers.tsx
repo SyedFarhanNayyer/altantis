@@ -51,7 +51,7 @@ export function FreeOffers() {
         </ul>
 
         <p data-reveal="fade" className="mt-8 text-center font-display text-caption lg:mt-[2.8125rem]">
-          No pressure, no obligation. Just clear answers from a local team.
+          Find out what your phones could be doing for your business.
         </p>
 
         <hr className="mt-16 border-line lg:mt-[5.75rem]" />

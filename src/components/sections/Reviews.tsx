@@ -7,18 +7,14 @@ const reviews: Review[] = [
     quote:
       "Our service experienced an unexpected outage, and Atlantis responded immediately. Their team arrived at our office the same day and worked directly with technical support to quickly diagnose and resolve the issue. The level of customer service was exceptional.",
     name: "Sandra Smith",
-    company: "Sandra’s Cafe",
     date: "2026-10-02",
-    location: "Boston, USA",
     rating: 5,
   },
   {
     quote:
       "Our service experienced an unexpected outage, and Atlantis responded immediately. Their team arrived at our office the same day and worked directly with technical support to quickly diagnose and resolve the issue. The level of customer service was exceptional.",
     name: "Sandra Smith",
-    company: "Sandra’s Cafe",
     date: "2026-10-02",
-    location: "Boston, USA",
     rating: 5,
   },
 ];
