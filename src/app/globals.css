@@ -1,1 +1,66 @@
 @import "tailwindcss";
+@import "../styles/tokens.css";
+
+/* Page container: 1200px content column with a fluid side gutter */
+@utility container-page {
+  width: 100%;
+  max-width: calc(75rem + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+:root {
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+}
+
+@keyframes intro-failsafe {
+  to {
+    visibility: visible;
+  }
+}
+
+@layer base {
+  body {
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-wrap: balance;
+  }
+
+  /* Hero intro: hidden only when the head script set html.motion (JS on,
+     no reduced-motion preference). The failsafe shows them after 2.5s even
+     if the animation never runs. */
+  .motion [data-intro] {
+    visibility: hidden;
+    animation: intro-failsafe 0s linear 2.5s forwards;
+  }
+
+  /* Custom cursor replaces the native one on mouse/trackpad. */
+  .has-cursor,
+  .has-cursor * {
+    cursor: none !important;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}

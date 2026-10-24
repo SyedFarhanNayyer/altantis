@@ -1,0 +1,89 @@
+/*
+ * Design tokens — the single source of truth for colour and typography.
+ * Change a value here and every component that uses it updates.
+ * Components must use these tokens (e.g. `bg-brand`, `text-ink`,
+ * `font-display`, `text-h2`), never raw hex values or font names.
+ */
+
+@theme inline {
+  /* Fonts — CSS variables come from next/font in src/app/fonts.ts */
+  --font-display: var(--font-line-seed), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-body);
+}
+
+@theme {
+  /* Surfaces */
+  --color-canvas: #fffbf9; /* page background */
+  --color-sand: #f5f0ed; /* upgrade, about and footer bands */
+  --color-paper: #fff9f6; /* feature cards */
+  --color-card: #ffffff; /* offer, guide cards */
+  --color-night: #101316; /* hero overlays, deep text */
+
+  /* Text */
+  --color-ink: #161210;
+  --color-on-dark: #ffffff;
+
+  /* Brand */
+  --color-brand: #df3700; /* borders, icons, large text */
+  --color-brand-strong: #c43000; /* brand-coloured text below 24px (meets 4.5:1) */
+  --color-amber: #f3a600; /* stats, stars, check icons */
+  --color-brand-from: #df3400; /* gradient start (left) */
+  --color-brand-to: #f3a600; /* gradient end (right) */
+
+  /* Lines & borders */
+  --color-line: #d8d0cc; /* table rules, dividers, review cards */
+  --color-line-light: #e5e1df; /* offer and guide card borders */
+  --color-line-dashed: #d0c6c0; /* upgrade benefit cards */
+  --color-line-strong: #5c5c5c; /* feature card dashed border */
+  --color-avatar-ring: #f9fafb;
+
+  /* Type scale — fluid on small screens, Figma sizes at desktop */
+  --text-h1: clamp(2.25rem, 1.75rem + 2vw, 3.125rem); /* 50px */
+  --text-h1--line-height: 1.2;
+  --text-stat: clamp(2.5rem, 2rem + 1.6vw, 3.125rem); /* 50px */
+  --text-stat--line-height: 1.2;
+  --text-cta: clamp(2rem, 1.55rem + 1.8vw, 2.8125rem); /* 45px */
+  --text-cta--line-height: 1.22;
+  --text-cta--letter-spacing: -0.02em;
+  --text-h2: clamp(1.875rem, 1.5rem + 1.5vw, 2.5rem); /* 40px */
+  --text-h2--line-height: 1.25;
+  --text-h2--letter-spacing: -0.02em;
+  --text-eyebrow-lg: 1.5625rem; /* 25px */
+  --text-eyebrow-lg--line-height: 2.1875rem;
+  --text-title-lg: 1.4375rem; /* 23px */
+  --text-title-lg--line-height: 1.875rem;
+  --text-eyebrow: 1.25rem; /* 20px */
+  --text-eyebrow--line-height: 1.75rem;
+  --text-title: 1.25rem; /* 20px */
+  --text-title--line-height: 1.875rem;
+  --text-title-sm: 1.1875rem; /* 19px */
+  --text-title-sm--line-height: 1.75rem;
+  --text-card-title: 1.125rem; /* 18px */
+  --text-card-title--line-height: 1.5625rem;
+  --text-card-title--letter-spacing: -0.02em;
+  --text-body: 1.0625rem; /* 17px */
+  --text-body--line-height: 1.75rem;
+  --text-body-snug: 1.0625rem; /* 17px */
+  --text-body-snug--line-height: 1.5625rem;
+  --text-body-sm: 1rem; /* 16px */
+  --text-body-sm--line-height: 1.5625rem;
+  --text-label: 1rem; /* 16px — buttons, nav */
+  --text-label--line-height: 1.25rem;
+  --text-label--letter-spacing: -0.03em;
+  --text-caption: 0.9375rem; /* 15px */
+  --text-caption--line-height: 1.25rem;
+  --text-small: 0.875rem; /* 14px */
+  --text-small--line-height: 1.25rem;
+  --text-xs: 0.8125rem; /* 13px */
+  --text-xs--line-height: 1.125rem;
+}
+
+/* Brand gradient (Figma: left #df3400 → right #f3a600) */
+@utility bg-brand-gradient {
+  background-image: linear-gradient(
+    to right,
+    var(--color-brand-from),
+    var(--color-brand-to)
+  );
+}
