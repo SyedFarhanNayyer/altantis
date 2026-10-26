@@ -13,11 +13,11 @@ export function Hero() {
       {/* Overlays from Figma: left wash, top and bottom fades */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-r from-night/80 to-night/45 lg:hidden"
+        className="absolute inset-0 bg-gradient-to-r from-night/88 to-night/55 lg:hidden"
       />
       <div
         aria-hidden="true"
-        className="absolute inset-y-0 left-0 hidden w-[61%] bg-gradient-to-r from-night from-[26%] to-night/0 opacity-70 lg:block"
+        className="absolute inset-y-0 left-0 hidden w-[66%] bg-gradient-to-r from-night from-[32%] to-night/0 opacity-85 lg:block"
       />
       <div
         aria-hidden="true"
