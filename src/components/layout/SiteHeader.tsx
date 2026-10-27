@@ -18,7 +18,7 @@ export function SiteHeader() {
         <Link
           href="/"
           data-intro
-          className="shrink-0 lg:ml-[1.3rem]"
+          className="shrink-0"
           aria-label="Atlantis home"
         >
           <Image
