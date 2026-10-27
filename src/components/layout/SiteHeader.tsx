@@ -22,12 +22,13 @@ export function SiteHeader() {
           aria-label="Atlantis home"
         >
           <Image
-            src="/images/atlantis-logo.png"
+            src="/images/atlantis-logo.svg"
             alt="Atlantis"
-            width={90}
-            height={56}
+            width={98}
+            height={60}
             priority
-            className="h-14 w-[5.625rem] object-contain transition-[height] duration-500 group-data-[scrolled=true]:h-11"
+            unoptimized
+            className="h-14 w-auto transition-[height] duration-500 group-data-[scrolled=true]:h-11"
           />
         </Link>
 
