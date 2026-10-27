@@ -9,11 +9,11 @@ import { gsap, useGSAP } from "@/lib/gsap";
 // photos below. Switch back to "slider" here to restore the photo slider.
 const BACKGROUND: "video" | "slider" = "video";
 
-const VIDEO = "/videos/Business-Hero-Vid.mp4";
+const VIDEO = "/videos/hero-background.mp4";
 // The clip's first frame: shown until the video plays, so the hand-off is seamless.
-const POSTER = "/images/hero-video-first-frame.jpg";
-// The man stands right of centre; on narrow screens the crop follows him.
-const VIDEO_FIT = "object-cover object-[64%_50%] lg:object-center";
+const POSTER = "/images/hero-background-first-frame.jpg";
+// The people fill the frame, so the crop stays centred on every screen.
+const VIDEO_FIT = "object-cover object-center";
 
 // People sit on the right of every photo, clear of the headline. On narrow
 // screens each slide is cropped to keep its subject in frame.
