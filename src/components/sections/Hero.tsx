@@ -31,6 +31,9 @@ export function Hero() {
       {/* Fills one screen; top padding clears the 92px header */}
       <div className="container-page relative pt-[6.5rem] pb-10 lg:pt-[7.75rem] lg:pb-12">
         <div data-scroll-out className="max-w-[37.0625rem] text-on-dark">
+          <p data-intro="lines" className="mb-3 font-display text-eyebrow text-amber">
+            Celebrate Life. Stay Connected
+          </p>
           <h1 id="hero-title" data-intro="lines" className="text-h1">
             More Calls Answered
             {" "}
