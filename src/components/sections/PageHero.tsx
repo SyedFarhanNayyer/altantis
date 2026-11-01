@@ -1,12 +1,9 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
 import { ButtonLink } from "@/components/ui/ButtonLink";
-import type { Page } from "@/lib/pages";
 
 type Action = { label: string; href: string };
 
 type Props = {
-  trail: Page[];
   title: ReactNode;
   body?: ReactNode;
   primary?: Action;
@@ -19,35 +16,11 @@ type Props = {
 // actions and an index of the page's sections so visitors can jump to what
 // they came for. Same night ground and intro sequence as the homepage hero,
 // with a smaller title.
-export function PageHero({ trail, title, body, primary, secondary, contents }: Props) {
+export function PageHero({ title, body, primary, secondary, contents }: Props) {
   return (
     <section aria-labelledby="hero-title" className="bg-night text-on-dark">
       <div className={`container-page pt-36 lg:pt-44 ${contents ? "" : "pb-16 lg:pb-24"}`}>
-        <nav data-intro aria-label="Breadcrumb">
-          <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-small text-on-dark/75">
-            {trail.map((crumb, i) => {
-              const last = i === trail.length - 1;
-              return (
-                <li key={crumb.path} className="flex items-center gap-2">
-                  {last ? (
-                    <span aria-current="page" className="text-on-dark">
-                      {crumb.title}
-                    </span>
-                  ) : (
-                    <>
-                      <Link href={crumb.path} className="underline-offset-4 hover:text-amber hover:underline">
-                        {crumb.title}
-                      </Link>
-                      <span aria-hidden="true">›</span>
-                    </>
-                  )}
-                </li>
-              );
-            })}
-          </ol>
-        </nav>
-
-        <div className="mt-6 max-w-[48rem] lg:mt-8">
+        <div className="max-w-[48rem]">
           <h1 id="hero-title" data-intro="lines" className="text-h2">
             {title}
           </h1>

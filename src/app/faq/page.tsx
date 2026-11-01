@@ -4,8 +4,7 @@ import { ContactCard } from "@/components/sections/ContactCard";
 import { FaqAccordion } from "@/components/sections/FaqAccordion";
 import { PageHero } from "@/components/sections/PageHero";
 import { faqGroups, faqText } from "@/content/faq";
-import { breadcrumbTrail } from "@/lib/pages";
-import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
+import { webPageSchema } from "@/lib/schema";
 
 const path = "/faq";
 const title = "Business Phone System FAQ | Atlantis Utility";
@@ -21,7 +20,6 @@ export const metadata: Metadata = {
 };
 
 export default function FaqPage() {
-  const trail = breadcrumbTrail(path);
   const all = faqGroups.flatMap((g) => g.items);
 
   return (
@@ -35,11 +33,9 @@ export default function FaqPage() {
             acceptedAnswer: { "@type": "Answer", text: faqText(f) },
           })),
         },
-        breadcrumbSchema(trail),
       ]}
     >
       <PageHero
-        trail={trail}
         title={
           <>
             Frequently asked questions{" "}

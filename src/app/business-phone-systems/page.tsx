@@ -14,7 +14,6 @@ import { Outcomes } from "@/components/sections/business-phone-systems/Outcomes"
 import { Solutions } from "@/components/sections/business-phone-systems/Solutions";
 import { PageHero } from "@/components/sections/PageHero";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { breadcrumbTrail } from "@/lib/pages";
 import { site } from "@/lib/site";
 
 const path = "/business-phone-systems";
@@ -31,14 +30,11 @@ export const metadata: Metadata = {
 };
 
 export default function BusinessPhoneSystemsPage() {
-  const trail = breadcrumbTrail(path);
-
   return (
     <>
       <SiteHeader />
       <main id="main">
         <PageHero
-          trail={trail}
           title={
             <>
               Business Phone Systems,{" "}
@@ -118,26 +114,13 @@ export default function BusinessPhoneSystemsPage() {
       <JsonLd
         data={{
           "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Service",
-              name: "Business Phone Systems",
-              serviceType: "Business phone system installation and support",
-              description,
-              url: `${site.url}${path}`,
-              provider: { "@id": `${site.url}/#organization` },
-              areaServed: { "@type": "AdministrativeArea", name: "Ventura County, California" },
-            },
-            {
-              "@type": "BreadcrumbList",
-              itemListElement: trail.map((crumb, i) => ({
-                "@type": "ListItem",
-                position: i + 1,
-                name: crumb.title,
-                item: `${site.url}${crumb.path === "/" ? "" : crumb.path}`,
-              })),
-            },
-          ],
+          "@type": "Service",
+          name: "Business Phone Systems",
+          serviceType: "Business phone system installation and support",
+          description,
+          url: `${site.url}${path}`,
+          provider: { "@id": `${site.url}/#organization` },
+          areaServed: { "@type": "AdministrativeArea", name: "Ventura County, California" },
         }}
       />
       {/* Last in the tree: their effects run once every section above has hydrated. */}

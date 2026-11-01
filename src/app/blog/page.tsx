@@ -6,8 +6,7 @@ import { PageHero } from "@/components/sections/PageHero";
 import { PostCard } from "@/components/sections/PostCard";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { allPosts, formatPostDate, postPath, readingTime } from "@/content/posts";
-import { breadcrumbTrail } from "@/lib/pages";
-import { absoluteUrl, breadcrumbSchema, webPageSchema } from "@/lib/schema";
+import { absoluteUrl, webPageSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
 
 const path = "/blog";
@@ -24,7 +23,6 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  const trail = breadcrumbTrail(path);
   const [featured, ...rest] = allPosts;
 
   return (
@@ -40,11 +38,9 @@ export default function BlogPage() {
             datePublished: p.date,
           })),
         },
-        breadcrumbSchema(trail),
       ]}
     >
       <PageHero
-        trail={trail}
         title={
           <>
             Guides and insights{" "}

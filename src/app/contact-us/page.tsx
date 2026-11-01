@@ -3,8 +3,7 @@ import { OfficeHours } from "@/components/layout/OfficeHours";
 import { PageShell } from "@/components/layout/PageShell";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { PageHero } from "@/components/sections/PageHero";
-import { breadcrumbTrail } from "@/lib/pages";
-import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
+import { webPageSchema } from "@/lib/schema";
 import { business } from "@/lib/site";
 
 const path = "/contact-us";
@@ -23,12 +22,9 @@ export const metadata: Metadata = {
 const { address } = business;
 
 export default function ContactPage() {
-  const trail = breadcrumbTrail(path);
-
   return (
-    <PageShell schema={[webPageSchema("ContactPage", path, title, description), breadcrumbSchema(trail)]}>
+    <PageShell schema={[webPageSchema("ContactPage", path, title, description)]}>
       <PageHero
-        trail={trail}
         title={
           <>
             Talk to an Atlantis{" "}

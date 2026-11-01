@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { PageHero } from "@/components/sections/PageHero";
-import { breadcrumbTrail, type PagePath } from "@/lib/pages";
-import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
+import { getPage, type PagePath } from "@/lib/pages";
+import { webPageSchema } from "@/lib/schema";
 import { PageShell } from "./PageShell";
 
 export type LegalSection = { id: string; title: string; body: ReactNode };
@@ -21,7 +21,6 @@ type Props = {
 // measure, nothing else competing for attention. The text is the company's
 // own; this only lays it out.
 export function LegalPage({ path, title, description, updated, intro, sections, numbered = false }: Props) {
-  const trail = breadcrumbTrail(path);
   const date =
     updated &&
     new Date(`${updated}T00:00:00`).toLocaleDateString("en-US", {
@@ -33,10 +32,9 @@ export function LegalPage({ path, title, description, updated, intro, sections, 
   const Item = numbered ? "li" : "section";
 
   return (
-    <PageShell schema={[webPageSchema("WebPage", path, title, description), breadcrumbSchema(trail)]}>
+    <PageShell schema={[webPageSchema("WebPage", path, title, description)]}>
       <PageHero
-        trail={trail}
-        title={<span className="font-bold">{trail.at(-1)!.title}</span>}
+        title={<span className="font-bold">{getPage(path)!.title}</span>}
         body={
           updated && (
             <>

@@ -1,5 +1,5 @@
-// Every public page on the site, from the approved sitemap. `parent` builds
-// the breadcrumb trail; `label` is the shorter name used in menus.
+// Every public page on the site, from the approved sitemap. `parent` records
+// where a page sits in the sitemap; `label` is the shorter name used in menus.
 
 export type Page = {
   path: string;
@@ -84,15 +84,6 @@ export type PagePath = (typeof pages)[number]["path"];
 const byPath = new Map<string, Page>(pages.map((p) => [p.path, p]));
 
 export const getPage = (path: string) => byPath.get(path);
-
-// Home first, then each ancestor, ending with the page itself.
-export function breadcrumbTrail(path: string): Page[] {
-  const trail: Page[] = [];
-  for (let page = getPage(path); page; page = page.parent ? getPage(page.parent) : undefined) {
-    trail.unshift(page);
-  }
-  return path === "/" ? trail : [byPath.get("/")!, ...trail];
-}
 
 // A menu entry: a page path plus an optional label that overrides the page's own.
 // `image` replaces the mega menu photo while the link is hovered or focused.

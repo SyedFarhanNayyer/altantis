@@ -11,8 +11,7 @@ import {
   readingTime,
   type Block,
 } from "@/content/posts";
-import { breadcrumbTrail, type Page } from "@/lib/pages";
-import { absoluteUrl, breadcrumbSchema } from "@/lib/schema";
+import { absoluteUrl } from "@/lib/schema";
 import { site } from "@/lib/site";
 import { PageShell } from "./PageShell";
 
@@ -67,7 +66,6 @@ export function PostPage({ slug }: { slug: string }) {
   const post = getPost(slug)!;
 
   const path = postPath(post);
-  const trail = [...breadcrumbTrail("/blog"), { path, title: post.title } as Page];
   // The next newest guides, wrapping round to the start of the list.
   const index = allPosts.indexOf(post);
   const related = [1, 2, 3]
@@ -90,11 +88,9 @@ export function PostPage({ slug }: { slug: string }) {
           author: { "@id": `${site.url}/#organization` },
           publisher: { "@id": `${site.url}/#organization` },
         },
-        breadcrumbSchema(trail),
       ]}
     >
       <PageHero
-        trail={trail}
         title={<span className="font-bold">{post.title}</span>}
         body={
           <span className="flex flex-wrap items-center gap-x-4 gap-y-1">

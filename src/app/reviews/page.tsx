@@ -5,8 +5,7 @@ import { PageHero } from "@/components/sections/PageHero";
 import { ReviewCard } from "@/components/sections/ReviewCard";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { reviews } from "@/content/reviews";
-import { breadcrumbTrail } from "@/lib/pages";
-import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
+import { webPageSchema } from "@/lib/schema";
 import { business } from "@/lib/site";
 
 const path = "/reviews";
@@ -25,12 +24,9 @@ export const metadata: Metadata = {
 };
 
 export default function ReviewsPage() {
-  const trail = breadcrumbTrail(path);
-
   return (
-    <PageShell schema={[webPageSchema("WebPage", path, title, description), breadcrumbSchema(trail)]}>
+    <PageShell schema={[webPageSchema("WebPage", path, title, description)]}>
       <PageHero
-        trail={trail}
         title={
           <>
             What our customers say{" "}
