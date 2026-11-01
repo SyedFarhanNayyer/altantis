@@ -1,14 +1,22 @@
 import type { MetadataRoute } from "next";
+import { allPosts, postPath } from "@/content/posts";
+import { type Page, pages } from "@/lib/pages";
 import { site } from "@/lib/site";
 
-// Add each new public page here as it's built.
+// Every page in the approved sitemap (src/lib/pages.ts), plus each guide.
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    {
-      url: site.url,
+    ...(pages as readonly Page[]).map((page) => ({
+      url: page.path === "/" ? site.url : `${site.url}${page.path}`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
+      changeFrequency: "monthly" as const,
+      priority: page.path === "/" ? 1 : page.parent ? 0.6 : 0.8,
+    })),
+    ...allPosts.map((post) => ({
+      url: `${site.url}${postPath(post)}`,
+      lastModified: new Date(`${post.date}T00:00:00`),
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
+    })),
   ];
 }

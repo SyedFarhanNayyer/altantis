@@ -8,7 +8,7 @@ type Props = {
   className?: string;
 };
 
-// Section title used across the homepage: an optional brand-coloured
+// Section title used across the homepage: an optional orange
 // kicker line above an h2 that mixes regular and bold weights.
 export function SectionHeading({
   id,
@@ -20,7 +20,7 @@ export function SectionHeading({
   return (
     <div className={`${align === "center" ? "text-center" : ""} ${className}`}>
       {eyebrow && (
-        <p data-reveal="fade" className="font-display text-eyebrow text-brand-strong">{eyebrow}</p>
+        <p data-reveal="fade" className="font-display text-eyebrow text-orange-strong">{eyebrow}</p>
       )}
       <h2 id={id} data-reveal="lines" className="text-h2 text-ink">
         {children}

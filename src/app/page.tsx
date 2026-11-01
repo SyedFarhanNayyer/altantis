@@ -8,7 +8,6 @@ import { ClosingCta } from "@/components/sections/ClosingCta";
 import { CopperShutdown } from "@/components/sections/CopperShutdown";
 import { Faq } from "@/components/sections/Faq";
 import { Features } from "@/components/sections/Features";
-import { FreeOffers } from "@/components/sections/FreeOffers";
 import { Guides } from "@/components/sections/Guides";
 import { Hero } from "@/components/sections/Hero";
 import { PriceComparison } from "@/components/sections/PriceComparison";
@@ -26,7 +25,6 @@ export default function Home() {
         <SystemUpgrade />
         <PriceComparison />
         <About />
-        <FreeOffers />
         <Reviews />
         <ClosingCta />
         <Faq />

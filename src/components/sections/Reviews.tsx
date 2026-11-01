@@ -1,23 +1,6 @@
 import { AvatarGroup } from "@/components/ui/AvatarGroup";
-import { ReviewCarousel, type Review } from "./ReviewCarousel";
-
-// Placeholder reviews from the Figma file — replace with real customer reviews.
-const reviews: Review[] = [
-  {
-    quote:
-      "Our service experienced an unexpected outage, and Atlantis responded immediately. Their team arrived at our office the same day and worked directly with technical support to quickly diagnose and resolve the issue. The level of customer service was exceptional.",
-    name: "Sandra Smith",
-    date: "2026-10-02",
-    rating: 5,
-  },
-  {
-    quote:
-      "Our service experienced an unexpected outage, and Atlantis responded immediately. Their team arrived at our office the same day and worked directly with technical support to quickly diagnose and resolve the issue. The level of customer service was exceptional.",
-    name: "Sandra Smith",
-    date: "2026-10-02",
-    rating: 5,
-  },
-];
+import { reviews } from "@/content/reviews";
+import { ReviewCarousel } from "./ReviewCarousel";
 
 export function Reviews() {
   return (
@@ -27,12 +10,12 @@ export function Reviews() {
           reviews={reviews}
           heading={
             <div>
-              <p data-reveal="fade" className="font-display text-eyebrow-lg text-brand-strong">Customer Reviews</p>
+              <p data-reveal="fade" className="font-display text-eyebrow-lg text-orange">Customer Reviews</p>
               <h2 id="reviews-title" data-reveal="lines" className="mt-2.5 text-h2">
-                Businesses that grew
+                Trusted Partnerships.
                 {" "}
                 <br />
-                <span className="font-bold">with Atlantis</span>
+                <span className="font-bold">Lasting Connections.</span>
               </h2>
             </div>
           }
@@ -43,7 +26,7 @@ export function Reviews() {
                 Trusted by Top Companies
                 {" "}
                 <br />
-                100K+ Satisfied customers
+                1000+ Satisfied customers
               </p>
             </div>
           }

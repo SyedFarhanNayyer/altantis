@@ -1,6 +1,6 @@
 import { JsonLd } from "@/components/ui/JsonLd";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { faqs } from "@/content/faq";
+import { faqText, faqs } from "@/content/faq";
 import { FaqAccordion } from "./FaqAccordion";
 
 export function Faq() {
@@ -21,7 +21,7 @@ export function Faq() {
           mainEntity: faqs.map((f) => ({
             "@type": "Question",
             name: f.question,
-            acceptedAnswer: { "@type": "Answer", text: f.answer },
+            acceptedAnswer: { "@type": "Answer", text: faqText(f) },
           })),
         }}
       />

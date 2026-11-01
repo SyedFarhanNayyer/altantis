@@ -24,6 +24,10 @@ const sizes: Record<Size, string> = {
   sm: "h-[2.625rem] px-6 text-small tracking-[-0.03em]",
 };
 
+// For a <button> that should look like the links below.
+export const buttonClass = (variant: Variant = "primary", size: Size = "lg") =>
+  `${base} ${variants[variant]} ${sizes[size]}`;
+
 type Props = ComponentProps<typeof Link> & {
   variant?: Variant;
   size?: Size;
@@ -35,5 +39,5 @@ export function ButtonLink({
   className = "",
   ...props
 }: Props) {
-  return <Link className={`${base} ${variants[variant]} ${sizes[size]} ${className}`} {...props} />;
+  return <Link className={`${buttonClass(variant, size)} ${className}`} {...props} />;
 }

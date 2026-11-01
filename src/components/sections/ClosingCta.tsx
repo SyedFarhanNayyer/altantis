@@ -19,14 +19,14 @@ export function ClosingCta() {
 
       <div className="container-page flex min-h-[30rem] flex-col items-center justify-end pt-32 pb-[5.875rem] text-center text-on-dark lg:h-[35.4375rem]">
         <p data-reveal="fade" className="font-display text-eyebrow leading-5 tracking-[-0.02em]">
-          Simple, Hassle-Free Business Phone Services
+          Your Next Business Connection Starts Here.
         </p>
         <h2 id="cta-title" data-reveal="lines" className="mt-2.5 max-w-[42.75rem] text-cta">
-          Ready to answer more calls and{" "}
-          <span className="font-bold">win more business?</span>
+          Ready to make your next connection{" "}
+          <span className="font-bold">with Atlantis.</span>
         </h2>
         <ButtonLink href="/contact" data-reveal="fade" className="mt-8 w-full sm:w-[18.875rem]">
-          Get in Touch with Atlantis
+          Get in Touch with Sales
         </ButtonLink>
       </div>
     </section>

@@ -64,3 +64,11 @@
     }
   }
 }
+
+/* SplitText line masks clip overflow, which cuts off descenders (g, y, p)
+   at tight line-heights. Extra room inside the mask, cancelled by a negative
+   margin, keeps the glyphs whole without shifting the layout. */
+.split-line-mask {
+  padding-block: 0.12em;
+  margin-block: -0.12em;
+}

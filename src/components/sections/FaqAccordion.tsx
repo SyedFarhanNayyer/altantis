@@ -1,19 +1,25 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useId, useState } from "react";
+import type { Faq } from "@/content/faq";
 import { ScrollTrigger } from "@/lib/gsap";
-
-type Item = { question: string; answer: string };
 
 // Answers stay in the DOM when collapsed (height animates via grid rows),
 // so every answer is in the server HTML for search engines.
-export function FaqAccordion({ items }: { items: Item[] }) {
+export function FaqAccordion({
+  items,
+  className = "mx-auto mt-10 max-w-[50rem] lg:mt-[2.8125rem]",
+}: {
+  items: Faq[];
+  className?: string;
+}) {
   const [open, setOpen] = useState(0);
   const baseId = useId();
 
   return (
-    <div className="mx-auto mt-10 max-w-[50rem] lg:mt-[2.8125rem]">
+    <div className={className}>
       {items.map((item, i) => {
         const isOpen = open === i;
         const buttonId = `${baseId}-q${i}`;
@@ -52,7 +58,30 @@ export function FaqAccordion({ items }: { items: Item[] }) {
               }`}
             >
               <div className="overflow-hidden" inert={!isOpen}>
-                <p className="border-t border-line pt-1 pb-7 text-body-snug text-ink">{item.answer}</p>
+                <div className="space-y-3 border-t border-line pt-1 pb-7 text-body-snug text-ink">
+                  <p>{item.answer}</p>
+                  {item.more?.map((b, j) =>
+                    b.type === "p" ? (
+                      <p key={j}>{b.text}</p>
+                    ) : (
+                      <ul key={j} className="list-disc space-y-1.5 pl-6 marker:text-orange">
+                        {b.items.map((li) => (
+                          <li key={li}>{li}</li>
+                        ))}
+                      </ul>
+                    ),
+                  )}
+                  {item.link && (
+                    <p>
+                      <Link
+                        href={item.link.href}
+                        className="font-medium text-brand-strong underline underline-offset-4 hover:no-underline"
+                      >
+                        {item.link.label}
+                      </Link>
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
           </div>

@@ -126,7 +126,7 @@ function intro() {
   heroItems.forEach((el, i) => {
     if (el.dataset.intro === "lines") {
       tl.set(el, { autoAlpha: 1 }, 0.15);
-      const split = SplitText.create(el, { type: "lines", mask: "lines" });
+      const split = SplitText.create(el, { type: "lines", mask: "lines", linesClass: "split-line" });
       tl.from(
         split.lines,
         {
@@ -155,6 +155,7 @@ function revealLines() {
     SplitText.create(el, {
       type: "lines",
       mask: "lines",
+      linesClass: "split-line",
       autoSplit: true,
       onSplit: (self) =>
         gsap.from(self.lines, {

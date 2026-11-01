@@ -13,7 +13,6 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { business, footerNav, legalLinks, socialLinks } from "@/lib/site";
-import { OfficeHours } from "./OfficeHours";
 
 const socialIcons = {
   facebook: FacebookLogo,
@@ -68,7 +67,7 @@ export function SiteFooter() {
     <footer className="bg-sand">
       <div
         data-reveal="stagger"
-        className="container-page grid grid-cols-2 gap-x-6 gap-y-14 pt-20 pb-16 sm:gap-x-12 lg:grid-cols-[1.45fr_1fr_0.85fr_1.15fr] lg:pt-[6.875rem]"
+        className="container-page grid grid-cols-2 gap-x-6 gap-y-14 pt-20 pb-16 sm:gap-x-12 lg:grid-cols-[1.6fr_1fr_1fr] lg:pt-[6.875rem]"
       >
         {/* Brand and contact */}
         <div className="col-span-2 md:col-span-1">
@@ -158,14 +157,6 @@ export function SiteFooter() {
             ))}
           </ul>
         </nav>
-
-        {/* Hours */}
-        <div className="col-span-2 md:col-span-1">
-          <ColumnTitle>Office Hours</ColumnTitle>
-          <div className="mt-4">
-            <OfficeHours />
-          </div>
-        </div>
       </div>
 
       <div className="border-t border-line">

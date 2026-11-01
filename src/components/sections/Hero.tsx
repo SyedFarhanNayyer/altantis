@@ -30,22 +30,22 @@ export function Hero() {
 
       {/* Fills one screen; top padding clears the 92px header */}
       <div className="container-page relative pt-[6.5rem] pb-10 lg:pt-[7.75rem] lg:pb-12">
-        <div data-scroll-out className="max-w-[37.0625rem] text-on-dark">
-          <p data-intro="lines" className="mb-3 font-display text-eyebrow text-amber">
-            Celebrate Life. Stay Connected
+        <div data-scroll-out className="max-w-[44rem] text-on-dark">
+          <p data-intro="lines" className="mb-4 font-display text-tagline text-amber">
+            Celebrate life and stay connected to what matters.
           </p>
-          <h1 id="hero-title" data-intro="lines" className="text-h1">
-            More Calls Answered
+          <h1 id="hero-title" data-intro="lines" className="text-hero-title">
+            Business Phone Systems.
             {" "}
             <br />
-            <span className="font-bold">More Business Won</span>
+            <span className="font-bold">Built to Elevate Your Business.</span>
           </h1>
 
           <p data-intro className="mt-4 max-w-[35.75rem] text-body">
-            Every missed call is a customer who might call your competitor next.
-            Atlantis phone systems route every call to someone who can answer
-            it, at the desk, on a cell phone or after hours. They’re installed
-            and supported by the Atlantis team since 1984.
+            Stay connected with customers at the office, on your mobile or after
+            hours. Atlantis business phone systems bring flexible call routing
+            and everyday calling features together, with phones preconfigured
+            for easy setup and ongoing support from our team.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4 sm:gap-5 lg:mt-11">
@@ -53,12 +53,12 @@ export function Hero() {
               Request a Free Consultation
             </ButtonLink>
             <ButtonLink
-              href="#free-offers"
+              href="/business-phone-systems"
               data-intro
               variant="outline-light"
               className="w-full sm:w-[16.625rem]"
             >
-              See What You’re Missing
+              Explore Our Phone Solutions
             </ButtonLink>
           </div>
 
@@ -68,7 +68,7 @@ export function Hero() {
               Trusted by Top Companies
               {" "}
               <br />
-              100K+ Satisfied customers
+              1000+ Satisfied customers
             </p>
           </div>
         </div>
