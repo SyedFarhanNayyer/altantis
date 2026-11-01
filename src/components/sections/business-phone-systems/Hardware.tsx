@@ -10,14 +10,14 @@ const devices = [
     image: media.deskPhones,
   },
   {
-    title: "Cordless & Conference Phones",
-    body: "Freedom to move around the floor, and clear audio in every meeting room.",
+    title: "Yealink Cordless Phones",
+    body: "Freedom to take and transfer calls anywhere around the office.",
     image: media.cordless,
   },
   {
-    title: "VoIP PA & Door Intercoms",
-    body: "Building-wide paging, emergency announcements and door entry from any phone.",
-    image: media.paging,
+    title: "VoIP Business Phone",
+    body: "Answer your business line from a laptop, tablet or headset, wherever your team works.",
+    image: media.voip,
   },
 ];
 
@@ -48,7 +48,13 @@ export function Hardware() {
             <li key={d.title} className="group/item last:md:col-span-2 last:lg:col-span-1">
               <article className="flex h-full flex-col overflow-hidden rounded-[1.25rem] border border-line-light bg-card group-last/item:md:flex-row group-last/item:lg:flex-col">
                 <div className="relative aspect-[380/226] overflow-hidden group-last/item:md:aspect-auto group-last/item:md:min-h-56 group-last/item:md:w-1/2 group-last/item:lg:aspect-[380/226] group-last/item:lg:min-h-0 group-last/item:lg:w-auto">
-                  <Image src={d.image.src} alt={d.image.alt} fill unoptimized className="object-cover" />
+                  <Image
+                    src={d.image.src}
+                    alt={d.image.alt}
+                    fill
+                    unoptimized
+                    className={"contain" in d.image ? "object-contain p-4" : "object-cover"}
+                  />
                 </div>
                 <div className="flex flex-1 flex-col px-[1.0625rem] pt-5 pb-6 group-last/item:md:px-6 group-last/item:md:pt-6 group-last/item:lg:px-[1.0625rem] group-last/item:lg:pt-5">
                   <h3 className="font-display text-card-title font-bold text-night">{d.title}</h3>

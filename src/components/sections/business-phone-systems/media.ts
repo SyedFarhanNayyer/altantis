@@ -1,41 +1,35 @@
-// Photos for the Business Phone Systems page. Each `src` is an existing
-// site photo standing in until the planned shot (named in `planned`) is
-// supplied; swap the src here and every section picks it up.
+// Photos for the Business Phone Systems page. Swap a src here and every
+// section that uses it picks it up.
 
 export const media = {
   outcomes: {
-    planned: "bps-outcomes-team.jpg",
-    src: "/images/business-owner-phone-call.jpg",
-    alt: "Employee transferring a customer call on a business phone system",
+    src: "/images/bps-employee-answering-business-call.jpg",
+    alt: "Office employee answering a business call at her desk",
   },
   solutions: {
-    planned: "bps-solutions-consultation.jpg",
-    src: "/images/copper-line-team-meeting.jpg",
-    alt: "Atlantis consultant reviewing phone system options with a business owner",
+    src: "/images/bps-team-reviewing-phone-options.jpg",
+    alt: "Business team reviewing phone system options on a laptop",
   },
   callFlow: {
-    planned: "bps-call-flow-design.jpg",
-    src: "/images/atlantis-team-reviewing-screen.png",
-    alt: "Atlantis consultant designing a business call flow with a client",
+    src: "/images/bps-team-planning-call-flow.jpg",
+    alt: "Team meeting around a laptop to plan how calls move through the business",
   },
   reliability: {
-    planned: "bps-reliability-network.jpg",
-    src: "/images/business-team-coworking.png",
-    alt: "Atlantis technician configuring network equipment for a business phone system",
+    src: "/images/bps-team-checking-mobile-calls.jpg",
+    alt: "Coworkers checking a call on a smartphone together",
   },
   deskPhones: {
-    planned: "hw-yealink-nec-desk.jpg",
-    src: "/images/guide-phone-system-signs.jpg",
-    alt: "Yealink and NEC business desk phones",
+    src: "/images/hw-business-desk-phone-office.jpg",
+    alt: "IP desk phone with a color screen on an office desk",
   },
   cordless: {
-    planned: "hw-cordless-conference.jpg",
-    src: "/images/guide-missed-business-calls.png",
-    alt: "Cordless and conference phones for business",
+    src: "/images/hw-yealink-cordless-phone-base.png",
+    alt: "Yealink cordless handset in its charger beside the wireless base station",
+    // Product cut-out on a transparent background: show it whole, not cropped.
+    contain: true,
   },
-  paging: {
-    planned: "hw-voip-pa-intercom.jpg",
-    src: "/images/guide-copper-line-retirement.jpg",
-    alt: "VoIP paging speaker and door intercom",
+  voip: {
+    src: "/images/hw-employee-headset-call.jpg",
+    alt: "Employee on a headset call working from a laptop and tablet",
   },
-} as const;
+} as const satisfies Record<string, { src: string; alt: string; contain?: boolean }>;
