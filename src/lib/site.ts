@@ -196,7 +196,4 @@ export const footerNav = [
 export const legalLinks = [
   { label: "Privacy Policy", href: "/privacy-policy" },
   { label: "Terms & Conditions", href: "/terms-and-conditions" },
-  { label: "Disclaimer", href: "/disclaimer" },
-  { label: "Accessibility", href: "/accessibility-statement" },
-  { label: "Do Not Sell or Share My Personal Information", href: "/privacy-policy#ccpa" },
 ] as const;

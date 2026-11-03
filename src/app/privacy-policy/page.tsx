@@ -94,7 +94,6 @@ export default function PrivacyPolicyPage() {
           ),
         },
         {
-          // The footer's "Do Not Sell or Share My Personal Information" link lands here.
           id: "ccpa",
           title: "Sharing Your Information",
           body: (

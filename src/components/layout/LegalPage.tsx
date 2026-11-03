@@ -17,8 +17,8 @@ type Props = {
   numbered?: boolean;
 };
 
-// Plain reading layout for legal pages: one column at a comfortable
-// measure, nothing else competing for attention. The text is the company's
+// Plain reading layout for legal pages: one centred 1000px column,
+// with nothing else competing for attention. The text is the company’s
 // own; this only lays it out.
 export function LegalPage({ path, title, description, updated, intro, sections, numbered = false }: Props) {
   const date =
@@ -45,7 +45,7 @@ export function LegalPage({ path, title, description, updated, intro, sections, 
       />
 
       <article className="container-page py-20 lg:py-28">
-        <div className="max-w-[46rem] text-body text-ink [&_a]:font-medium [&_a]:break-words [&_a]:text-brand-strong [&_a]:underline [&_a]:underline-offset-4 [&_ol_ol]:mt-4 [&_ol_ol]:list-[upper-alpha] [&_ol_ol]:pl-6 [&_ol_ol>li]:mt-2 [&_p+p]:mt-4 [&_p+ul]:mt-4 [&_ul+p]:mt-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul>li]:mt-2">
+        <div className="mx-auto max-w-[62.5rem] text-body text-ink [&_a]:font-medium [&_a]:break-words [&_a]:text-brand-strong [&_a]:underline [&_a]:underline-offset-4 [&_ol_ol]:mt-4 [&_ol_ol]:list-[upper-alpha] [&_ol_ol]:pl-6 [&_ol_ol>li]:mt-2 [&_p+p]:mt-4 [&_p+ul]:mt-4 [&_ul+p]:mt-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul>li]:mt-2">
           {intro}
 
           <List className={`space-y-12 ${intro ? "mt-12" : ""}`}>
