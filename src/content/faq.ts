@@ -137,7 +137,7 @@ const support: Faq = {
   ],
 };
 
-// Homepage FAQ section.
+// Business Phone Systems page FAQ section.
 export const faqs: Faq[] = [whatIs, cost, downtime, keepNumbers, timeline, mobile, outage, growth, support];
 
 // FAQ page, grouped by topic. `id` is the in-page anchor for each group.
@@ -182,6 +182,7 @@ export const faqGroups: { id: string; title: string; items: Faq[] }[] = [
     id: "features",
     title: "Features & Equipment",
     items: [
+      whatIs,
       growth,
       mobile,
       {

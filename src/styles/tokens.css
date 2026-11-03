@@ -26,10 +26,9 @@
 
   /* Brand */
   --color-brand: #df3700; /* borders, icons, large text */
-  --color-brand-strong: #c43000; /* brand-coloured text below 24px (meets 4.5:1) */
+  --color-brand-strong: #c43000; /* section sub headings, brand-coloured text below 24px (meets 4.5:1) */
   --color-amber: #f3a600; /* stats, stars, check icons */
-  --color-orange: #d56d00; /* section kickers 24px and up (meets 3:1) */
-  --color-orange-strong: #b35500; /* section kickers below 24px (meets 4.5:1 on canvas) */
+  --color-orange: #d56d00; /* FAQ list markers */
   --color-brand-from: #df3400; /* gradient start (left) */
   --color-brand-to: #f3a600; /* gradient end (right) */
 
@@ -54,10 +53,11 @@
   --text-tagline: clamp(2.25rem, 1.75rem + 2vw, 3.125rem); /* 50px — hero tagline */
   --text-tagline--line-height: 1.15;
   --text-tagline--letter-spacing: -0.02em;
-  --text-hero-title: clamp(1.5rem, 1.3rem + 0.8vw, 2rem); /* 32px — hero h1 under the tagline */
+  --text-hero-title: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem); /* 24px — homepage hero h2 under the h1 tagline */
   --text-hero-title--line-height: 1.3;
-  --text-eyebrow-lg: 1.5625rem; /* 25px */
-  --text-eyebrow-lg--line-height: 2.1875rem;
+  --text-route-title: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem); /* 28px — call-routing outcomes, feature categories */
+  --text-route-title--line-height: 1.25;
+  --text-route-title--letter-spacing: -0.02em;
   --text-title-lg: 1.4375rem; /* 23px */
   --text-title-lg--line-height: 1.875rem;
   --text-eyebrow: 1.25rem; /* 20px */

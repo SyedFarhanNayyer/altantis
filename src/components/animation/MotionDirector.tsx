@@ -18,6 +18,10 @@ import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
  *   data-reveal="wipe"       image wipes in from its left edge; add
  *                            data-wipe-from="right" to reverse it, and
  *                            data-wipe-delay="0.1" to offset a row
+ *   data-reveal="route"      call-routing diagram draws itself with the
+ *                            scrollbar: [data-route-row] holds a
+ *                            [data-route-trunk], [data-route-branch] and
+ *                            [data-route-node]
  *   data-drift               photo drifts inside its frame while scrolling
  *   data-counter             number counts up from 0 (keeps its suffix)
  *   data-parallax="12"       element drifts ±12% while its section scrolls
@@ -63,6 +67,7 @@ function setup() {
       revealStagger();
       revealSteps();
       revealWipe();
+      revealRoute();
       drift();
       countUp();
       parallax();
@@ -253,6 +258,38 @@ function revealWipe() {
         0.15,
       );
     }
+  }
+}
+
+// A signal travels down the trunk with the scrollbar, turning into each branch
+// and lighting that outcome's node. Only the lines and nodes move; the text
+// stays readable throughout.
+function revealRoute() {
+  const tokens = getComputedStyle(document.documentElement);
+  const token = (name: string) => tokens.getPropertyValue(name).trim();
+  const unlit = {
+    backgroundColor: token("--color-canvas"),
+    color: token("--color-brand"),
+    borderColor: token("--color-line"),
+  };
+  const lit = {
+    backgroundColor: token("--color-brand"),
+    color: token("--color-on-dark"),
+    borderColor: token("--color-brand"),
+  };
+
+  for (const group of all('[data-reveal="route"]')) {
+    const rows = all("[data-route-row]", group);
+    const tl = gsap.timeline({
+      defaults: { ease: "none" },
+      scrollTrigger: { trigger: group, start: "top 70%", end: "bottom 65%", scrub: 0.6 },
+    });
+    rows.forEach((row, i) => {
+      const last = i === rows.length - 1;
+      tl.fromTo(row.querySelector("[data-route-trunk]"), { scaleY: 0 }, { scaleY: 1, duration: last ? 0.2 : 1 }, i);
+      tl.fromTo(row.querySelector("[data-route-branch]"), { scaleX: 0 }, { scaleX: 1, duration: 0.25 }, i + 0.2);
+      tl.fromTo(row.querySelector("[data-route-node]"), unlit, { ...lit, duration: 0.1 }, i + 0.45);
+    });
   }
 }
 

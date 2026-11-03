@@ -31,15 +31,13 @@ export function Hero() {
       {/* Fills one screen; top padding clears the 92px header */}
       <div className="container-page relative pt-[6.5rem] pb-10 lg:pt-[7.75rem] lg:pb-12">
         <div data-scroll-out className="max-w-[44rem] text-on-dark">
-          <p data-intro="lines" className="mb-4 font-display text-tagline text-amber">
+          <h1 id="hero-title" data-intro="lines" className="mb-4 font-display text-tagline text-amber">
             Celebrate life and stay connected to what matters.
-          </p>
-          <h1 id="hero-title" data-intro="lines" className="text-hero-title">
-            Business Phone Systems.
-            {" "}
-            <br />
-            <span className="font-bold">Built to Elevate Your Business.</span>
           </h1>
+          <h2 data-intro="lines" className="text-hero-title">
+            Business Phone Systems.{" "}
+            <span className="font-bold">Built to Elevate Your Business.</span>
+          </h2>
 
           <p data-intro className="mt-4 max-w-[35.75rem] text-body">
             Stay connected with customers at the office, on your mobile or after

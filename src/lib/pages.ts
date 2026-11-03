@@ -92,10 +92,12 @@ export type NavLink = { path: PagePath; label?: string; image?: string };
 // introduce the group in the desktop mega menu.
 export type NavGroup = {
   label: string;
+  /** Title above the group's links in the mega menu (default: `label`). */
+  heading?: string;
   description: string;
   image: { src: string; alt: string };
-  /** Link columns beside the photo in the mega menu (default 2). */
-  columns?: 2 | 3;
+  /** Columns for the group's links in the mega menu (default 1). */
+  columns?: 1 | 2;
   links: NavLink[];
 };
 

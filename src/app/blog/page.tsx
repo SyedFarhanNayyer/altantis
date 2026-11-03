@@ -53,7 +53,7 @@ export default function BlogPage() {
 
       <section aria-labelledby="featured-title" className="pt-20 lg:pt-28">
         <div className="container-page">
-          <h2 id="featured-title" data-reveal="fade" className="font-display text-eyebrow text-orange-strong">
+          <h2 id="featured-title" data-reveal="fade" className="font-display text-eyebrow text-brand-strong">
             Latest guide
           </h2>
 

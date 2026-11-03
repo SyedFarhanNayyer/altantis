@@ -6,13 +6,10 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 import { About } from "@/components/sections/About";
 import { ClosingCta } from "@/components/sections/ClosingCta";
 import { CopperShutdown } from "@/components/sections/CopperShutdown";
-import { Faq } from "@/components/sections/Faq";
 import { Features } from "@/components/sections/Features";
 import { Guides } from "@/components/sections/Guides";
 import { Hero } from "@/components/sections/Hero";
-import { PriceComparison } from "@/components/sections/PriceComparison";
 import { Reviews } from "@/components/sections/Reviews";
-import { SystemUpgrade } from "@/components/sections/SystemUpgrade";
 
 export default function Home() {
   return (
@@ -22,12 +19,9 @@ export default function Home() {
         <Hero />
         <CopperShutdown />
         <Features />
-        <SystemUpgrade />
-        <PriceComparison />
         <About />
         <Reviews />
         <ClosingCta />
-        <Faq />
         <Guides />
       </main>
       <SiteFooter />

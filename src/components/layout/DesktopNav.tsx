@@ -6,11 +6,11 @@ import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import { lift } from "@/components/ui/ButtonLink";
 import { navLabel, type NavLink } from "@/lib/pages";
-import { mainNav } from "@/lib/site";
+import { mainNav, menuQuickHeading, menuQuickLinks } from "@/lib/site";
 
-// Mega menu: a photo card linking to the group's overview page, then the
-// group's pages in two or three columns. Links with their own image swap
-// the photo while hovered or focused. Each panel is a disclosure: a click toggles
+// Mega menu: a photo card linking to the group's overview page, the group's
+// pages, then a column of the pages people look for from anywhere (pricing,
+// features, contact). Links with their own image swap the photo while hovered or focused. Each panel is a disclosure: a click toggles
 // a group, hovering with a mouse opens it, and Escape, an outside click or
 // moving focus away closes it.
 // Each panel spans the header (the nearest positioned ancestor), so the list
@@ -69,7 +69,9 @@ export function DesktopNav() {
   };
 
   const linkClass =
-    "block rounded-md px-3 py-2.5 text-body-sm font-medium transition-colors hover:bg-sand hover:text-brand-strong focus-visible:bg-sand focus-visible:text-brand-strong aria-[current=page]:text-brand-strong";
+    "block rounded-md px-3 py-1.5 text-body-sm font-medium transition-colors hover:bg-sand hover:text-brand-strong focus-visible:bg-sand focus-visible:text-brand-strong aria-[current=page]:text-brand-strong";
+
+  const headingClass = "mb-2 px-3 font-display text-label font-bold tracking-normal text-brand-strong";
 
   const renderLink = (link: NavLink) => (
     <li key={link.path}>
@@ -91,8 +93,9 @@ export function DesktopNav() {
         {mainNav.map((group, i) => {
           const isOpen = open === i;
           const panelId = `${baseId}-${i}`;
-          const [overview, ...links] = group.links;
-          const count = group.columns ?? 2;
+          const [overview, ...rest] = group.links;
+          const links = rest.filter((l) => !menuQuickLinks.some((q) => q.path === l.path));
+          const count = group.columns ?? 1;
           const perColumn = Math.ceil(links.length / count);
           const linkColumns = Array.from({ length: count }, (_, c) =>
             links.slice(c * perColumn, (c + 1) * perColumn),
@@ -137,7 +140,7 @@ export function DesktopNav() {
                   isOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"
                 }`}
               >
-                <div className={`container-page grid gap-10 py-10 ${count === 3 ? "grid-cols-4" : "grid-cols-3"}`}>
+                <div className={`container-page grid gap-10 py-10 ${count === 2 ? "grid-cols-4" : "grid-cols-3"}`}>
                   <Link
                     href={overview.path}
                     aria-current={pathname === overview.path ? "page" : undefined}
@@ -178,11 +181,25 @@ export function DesktopNav() {
                     </span>
                   </Link>
 
-                  {linkColumns.map((col, c) => (
-                    <ul key={c} className="flex flex-col gap-1 border-l border-line pl-6">
-                      {col.map(renderLink)}
-                    </ul>
-                  ))}
+                  <div className={`border-l border-line pl-6 ${count === 2 ? "col-span-2" : ""}`}>
+                    <p id={`${panelId}-main`} className={headingClass}>
+                      {group.heading ?? group.label}
+                    </p>
+                    <div className={count === 2 ? "grid grid-cols-2 gap-x-6" : ""}>
+                      {linkColumns.map((col, c) => (
+                        <ul key={c} aria-labelledby={`${panelId}-main`}>
+                          {col.map(renderLink)}
+                        </ul>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="border-l border-line pl-6">
+                    <p id={`${panelId}-quick`} className={headingClass}>
+                      {menuQuickHeading}
+                    </p>
+                    <ul aria-labelledby={`${panelId}-quick`}>{menuQuickLinks.map(renderLink)}</ul>
+                  </div>
                 </div>
               </div>
             </li>

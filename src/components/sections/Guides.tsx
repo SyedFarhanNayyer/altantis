@@ -11,7 +11,7 @@ const guides = [
 
 export function Guides() {
   return (
-    <section aria-labelledby="guides-title" className="pb-20 lg:pb-[7.375rem]">
+    <section aria-labelledby="guides-title" className="py-20 lg:py-[7.375rem]">
       <div className="container-page">
         <div className="flex flex-wrap items-center justify-between gap-6">
           <h2 id="guides-title" data-reveal="lines" className="text-h2 leading-tight">

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { ButtonLink } from "@/components/ui/ButtonLink";
+import { PlayCircleIcon } from "@/components/ui/PlayCircleIcon";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 type Action = { label: string; href: string };
@@ -15,6 +16,8 @@ type Props = {
   secondary: Action;
   image: { src: string; alt: string };
   imageSide: "left" | "right";
+  /** Shows a play button over the photo. Visual only until a video is supplied. */
+  play?: boolean;
   className?: string;
 };
 
@@ -30,6 +33,7 @@ export function MediaSplit({
   secondary,
   image,
   imageSide,
+  play = false,
   className = "",
 }: Props) {
   const imageLeft = imageSide === "left";
@@ -81,6 +85,13 @@ export function MediaSplit({
           }`}
         >
           <Image src={image.src} alt={image.alt} fill unoptimized className="object-cover" />
+          {play && (
+            <span aria-hidden="true" className="absolute inset-0 grid place-items-center">
+              <span className="grid size-20 place-items-center rounded-full bg-brand-gradient text-paper lg:size-24">
+                <PlayCircleIcon size={64} className="lg:size-20" />
+              </span>
+            </span>
+          )}
         </div>
       </div>
     </section>

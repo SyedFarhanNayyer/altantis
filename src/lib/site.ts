@@ -1,4 +1,4 @@
-import type { NavGroup } from "./pages";
+import type { NavGroup, NavLink } from "./pages";
 
 export const site = {
   name: "Atlantis",
@@ -16,8 +16,9 @@ export const site = {
 export const mainNav: NavGroup[] = [
   {
     label: "Phone Systems",
+    heading: "Business Phone Systems",
     description: "Cloud and on-site phone systems, planned around how your business takes calls.",
-    image: { src: "/images/hero-business-owner-tablet.jpg", alt: "Business owner managing calls on a tablet" },
+    image: { src: "/images/bps-employee-answering-business-call.jpg", alt: "Office employee answering a business call at her desk" },
     links: [
       { path: "/business-phone-systems" },
       { path: "/business-voip" },
@@ -57,7 +58,7 @@ export const mainNav: NavGroup[] = [
   },
   {
     label: "Industries",
-    columns: 3,
+    columns: 2,
     description: "Phone systems set up for the way your industry works.",
     image: { src: "/images/hero-team-reviewing-tablet.jpg", alt: "Office team reviewing calls together" },
     links: [
@@ -109,6 +110,11 @@ export const mainNav: NavGroup[] = [
     ],
   },
 ];
+
+// Shown in their own column in every mega menu. A group that also lists one
+// of these leaves it out of its main column.
+export const menuQuickHeading = "Get Started";
+export const menuQuickLinks: NavLink[] = [{ path: "/pricing" }, { path: "/features", label: "Features" }, { path: "/contact-us" }];
 
 // Header call to action; it replaces "Contact" in the main nav.
 export const headerCta = { label: "Contact Atlantis", href: "/contact" } as const;

@@ -5,7 +5,7 @@ import { media } from "./media";
 
 const devices = [
   {
-    title: "Yealink & NEC Desk Phones",
+    title: "Yealink Phones",
     body: "Color-screen IP phones with clear HD audio for every desk.",
     image: media.deskPhones,
   },

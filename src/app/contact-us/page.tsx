@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { OfficeHours } from "@/components/layout/OfficeHours";
 import { PageShell } from "@/components/layout/PageShell";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { PageHero } from "@/components/sections/PageHero";
@@ -38,11 +37,11 @@ export default function ContactPage() {
       <div className="container-page grid gap-14 py-20 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16 lg:py-28 xl:gap-24">
         <section aria-labelledby="message-title">
           <h2 id="message-title" data-reveal="lines" className="text-h2 text-ink">
-            Send us a <span className="font-bold">message</span>
+            Get in touch with <span className="font-bold">Atlantis Team.</span>
           </h2>
           <p data-reveal="fade" className="mt-3 max-w-[35rem] text-body">
-            Share a few details and a specialist will reply. The more you tell
-            us, the more useful our first conversation will be.
+            Have a question or want to discuss something with us? Fill out the
+            form below and let us know the best way to reach you.
           </p>
           <div className="mt-10 rounded-[1.25rem] border border-line-light bg-card p-6 sm:p-8">
             <ContactForm />
@@ -93,12 +92,6 @@ export default function ContactPage() {
                 >
                   Get directions
                 </a>
-              </dd>
-            </div>
-            <div className="py-5">
-              <dt className="text-small text-ink/75">Office hours</dt>
-              <dd className="mt-1">
-                <OfficeHours />
               </dd>
             </div>
           </dl>

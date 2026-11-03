@@ -1,31 +1,40 @@
 "use client";
 
-import { useId, useState, type FormEvent } from "react";
+import Link from "next/link";
+import { useId, useState, type FormEvent, type HTMLInputAutoCompleteAttribute } from "react";
 import { buttonClass } from "@/components/ui/ButtonLink";
 import { business } from "@/lib/site";
 
-type Field = "name" | "email" | "message";
+type Field = "name" | "business" | "phone" | "email" | "city";
 type Errors = Partial<Record<Field, string>>;
 
-const topics = [
-  "A new phone system",
-  "Replacing copper phone lines",
-  "Moving from my current provider",
-  "Support for my Atlantis system",
-  "Something else",
+const topics = ["Business Phone Systems", "Managed IT", "Cybersecurity", "Security Cameras", "Something else"];
+
+// In display order, so a failed submit focuses the first problem on the page.
+const inputs: {
+  name: Field;
+  label: string;
+  type: "text" | "tel" | "email";
+  autoComplete: HTMLInputAutoCompleteAttribute;
+  placeholder?: string;
+}[] = [
+  { name: "name", label: "Your name", type: "text", autoComplete: "name" },
+  { name: "business", label: "Business name", type: "text", autoComplete: "organization" },
+  { name: "phone", label: "Phone", type: "tel", autoComplete: "tel" },
+  { name: "email", label: "Email", type: "email", autoComplete: "email" },
+  { name: "city", label: "City and state", type: "text", autoComplete: "address-level2", placeholder: "Ventura, CA" },
 ];
 
-const userCounts = ["1–5", "6–20", "21–50", "51+", "Not sure"];
-
 function validate(data: FormData): Errors {
+  const get = (k: Field) => String(data.get(k) ?? "").trim();
   const errors: Errors = {};
-  if (!String(data.get("name") ?? "").trim()) errors.name = "Enter your name so we know who to reply to.";
-  const email = String(data.get("email") ?? "").trim();
-  if (!email) errors.email = "Enter your email address so we can reply.";
-  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
-    errors.email = "Enter an email address like name@company.com.";
-  if (!String(data.get("message") ?? "").trim())
-    errors.message = "Tell us a little about what you need.";
+  if (!get("name")) errors.name = "Enter your name so we know who to reply to.";
+  if (!get("business")) errors.business = "Enter your business name.";
+  if (!get("phone")) errors.phone = "Enter a phone number so we can reach you.";
+  else if (get("phone").replace(/\D/g, "").length < 7) errors.phone = "Enter a phone number like (805) 658-2329.";
+  if (!get("email")) errors.email = "Enter your email address so we can reply.";
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(get("email"))) errors.email = "Enter an email address like name@company.com.";
+  if (!get("city")) errors.city = "Enter your city and state, like Ventura, CA.";
   return errors;
 }
 
@@ -50,11 +59,11 @@ export function ContactForm() {
     const get = (k: string) => String(data.get(k) ?? "").trim();
     const details = [
       ["Name", get("name")],
-      ["Business", get("company")],
-      ["Email", get("email")],
+      ["Business", get("business")],
       ["Phone", get("phone")],
-      ["Phone users", get("users")],
-      ["Topic", get("topic")],
+      ["Email", get("email")],
+      ["City and state", get("city")],
+      ["Needs help with", get("topic")],
     ]
       .filter(([, value]) => value)
       .map(([key, value]) => `${key}: ${value}`);
@@ -68,9 +77,9 @@ export function ContactForm() {
     const data = new FormData(e.currentTarget);
     const next = validate(data);
     setErrors(next);
-    const first = (Object.keys(next) as Field[])[0];
+    const first = inputs.find((input) => next[input.name]);
     if (first) {
-      e.currentTarget.querySelector<HTMLElement>(`[name="${first}"]`)?.focus();
+      e.currentTarget.querySelector<HTMLElement>(`[name="${first.name}"]`)?.focus();
       return;
     }
     send(data);
@@ -81,136 +90,85 @@ export function ContactForm() {
   const control =
     "mt-2 block w-full rounded-lg border border-line bg-canvas px-4 text-body-sm text-ink transition-colors placeholder:text-ink/60 hover:border-line-strong focus-visible:border-brand focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-brand aria-[invalid=true]:border-brand-strong";
   const errorText = "mt-2 text-small text-brand-strong";
-
-  const describe = (name: Field) => (errors[name] ? errorId(name) : undefined);
+  const inlineLink = "font-medium text-brand-strong underline underline-offset-4 hover:no-underline";
 
   return (
     <form noValidate onSubmit={onSubmit} className="grid gap-6 sm:grid-cols-2">
-      <div>
-        <label htmlFor={fieldId("name")} className={label}>
-          Your name <span aria-hidden="true" className="text-brand-strong">*</span>
-        </label>
-        <input
-          id={fieldId("name")}
-          name="name"
-          type="text"
-          autoComplete="name"
-          required
-          aria-invalid={Boolean(errors.name)}
-          aria-describedby={describe("name")}
-          onBlur={(e) => checkField("name", e.currentTarget.form)}
-          className={`${control} h-12`}
-        />
-        {errors.name && (
-          <p id={errorId("name")} className={errorText}>
-            {errors.name}
-          </p>
-        )}
-      </div>
-
-      <div>
-        <label htmlFor={fieldId("company")} className={label}>
-          Business name
-        </label>
-        <input
-          id={fieldId("company")}
-          name="company"
-          type="text"
-          autoComplete="organization"
-          className={`${control} h-12`}
-        />
-      </div>
-
-      <div>
-        <label htmlFor={fieldId("email")} className={label}>
-          Email <span aria-hidden="true" className="text-brand-strong">*</span>
-        </label>
-        <input
-          id={fieldId("email")}
-          name="email"
-          type="email"
-          inputMode="email"
-          autoComplete="email"
-          required
-          aria-invalid={Boolean(errors.email)}
-          aria-describedby={describe("email")}
-          onBlur={(e) => checkField("email", e.currentTarget.form)}
-          className={`${control} h-12`}
-        />
-        {errors.email && (
-          <p id={errorId("email")} className={errorText}>
-            {errors.email}
-          </p>
-        )}
-      </div>
-
-      <div>
-        <label htmlFor={fieldId("phone")} className={label}>
-          Phone
-        </label>
-        <input
-          id={fieldId("phone")}
-          name="phone"
-          type="tel"
-          inputMode="tel"
-          autoComplete="tel"
-          className={`${control} h-12`}
-        />
-      </div>
+      {inputs.map((input) => (
+        <div key={input.name}>
+          <label htmlFor={fieldId(input.name)} className={label}>
+            {input.label}
+          </label>
+          <input
+            id={fieldId(input.name)}
+            name={input.name}
+            type={input.type}
+            autoComplete={input.autoComplete}
+            placeholder={input.placeholder}
+            required
+            aria-invalid={Boolean(errors[input.name])}
+            aria-describedby={errors[input.name] ? errorId(input.name) : undefined}
+            onBlur={(e) => checkField(input.name, e.currentTarget.form)}
+            className={`${control} h-12`}
+          />
+          {errors[input.name] && (
+            <p id={errorId(input.name)} className={errorText}>
+              {errors[input.name]}
+            </p>
+          )}
+        </div>
+      ))}
 
       <div>
         <label htmlFor={fieldId("topic")} className={label}>
-          What can we help with?
+          What do you need help with?
         </label>
         <select id={fieldId("topic")} name="topic" defaultValue="" className={`${control} h-12 cursor-pointer`}>
-          <option value="">Choose a topic</option>
+          <option value="">Please choose one</option>
           {topics.map((t) => (
             <option key={t}>{t}</option>
           ))}
         </select>
       </div>
 
-      <div>
-        <label htmlFor={fieldId("users")} className={label}>
-          How many people use phones?
-        </label>
-        <select id={fieldId("users")} name="users" defaultValue="" className={`${control} h-12 cursor-pointer`}>
-          <option value="">Choose a range</option>
-          {userCounts.map((c) => (
-            <option key={c}>{c}</option>
-          ))}
-        </select>
-      </div>
-
       <div className="sm:col-span-2">
         <label htmlFor={fieldId("message")} className={label}>
-          Message <span aria-hidden="true" className="text-brand-strong">*</span>
+          Tell us how we can help (optional)
         </label>
         <textarea
           id={fieldId("message")}
           name="message"
-          rows={5}
-          required
-          aria-invalid={Boolean(errors.message)}
-          aria-describedby={describe("message")}
-          onBlur={(e) => checkField("message", e.currentTarget.form)}
+          rows={4}
+          placeholder="A line or two is plenty"
           className={`${control} resize-y py-3`}
         />
-        {errors.message && (
-          <p id={errorId("message")} className={errorText}>
-            {errors.message}
-          </p>
-        )}
       </div>
 
-      <div className="flex flex-col gap-4 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-small text-ink/75">
-          <span aria-hidden="true" className="text-brand-strong">*</span> Required
-        </p>
+      <div className="flex flex-col gap-4 sm:col-span-2 sm:flex-row sm:items-center sm:gap-6">
         <button type="submit" className={`${buttonClass()} w-full sm:w-auto sm:px-9`}>
-          Send Message
+          Send message
         </button>
+        <p className="text-body-sm">
+          Urgent? Call{" "}
+          <a href={`tel:${business.phone.tel}`} className={inlineLink}>
+            {business.phone.display}
+          </a>{" "}
+          instead.
+        </p>
       </div>
+
+      <p className="text-small sm:col-span-2">
+        By sending this, you agree {business.legalName} may contact you about your inquiry. Opt out
+        any time. See our{" "}
+        <Link href="/privacy-policy" className={inlineLink}>
+          Privacy Policy
+        </Link>{" "}
+        and{" "}
+        <Link href="/terms-and-conditions" className={inlineLink}>
+          Terms &amp; Conditions
+        </Link>
+        .
+      </p>
 
       <p role="status" className="text-body-sm sm:col-span-2 empty:hidden">
         {sent &&

@@ -6,10 +6,6 @@ export const media = {
     src: "/images/bps-employee-answering-business-call.jpg",
     alt: "Office employee answering a business call at her desk",
   },
-  solutions: {
-    src: "/images/bps-team-reviewing-phone-options.jpg",
-    alt: "Business team reviewing phone system options on a laptop",
-  },
   callFlow: {
     src: "/images/bps-team-planning-call-flow.jpg",
     alt: "Team meeting around a laptop to plan how calls move through the business",

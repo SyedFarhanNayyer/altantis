@@ -4,15 +4,17 @@ import { MotionDirector } from "@/components/animation/MotionDirector";
 import { SmoothScroll } from "@/components/animation/SmoothScroll";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { Capabilities } from "@/components/sections/business-phone-systems/Capabilities";
+import { ComparePlans } from "@/components/sections/business-phone-systems/ComparePlans";
 import { Hardware } from "@/components/sections/business-phone-systems/Hardware";
 import { Implementation } from "@/components/sections/business-phone-systems/Implementation";
-import { Investment } from "@/components/sections/business-phone-systems/Investment";
 import { MediaSplit } from "@/components/sections/business-phone-systems/MediaSplit";
 import { media } from "@/components/sections/business-phone-systems/media";
 import { Outcomes } from "@/components/sections/business-phone-systems/Outcomes";
-import { Solutions } from "@/components/sections/business-phone-systems/Solutions";
+import { Plans } from "@/components/sections/business-phone-systems/Plans";
+import { ClosingCta } from "@/components/sections/ClosingCta";
+import { Faq } from "@/components/sections/Faq";
 import { PageHero } from "@/components/sections/PageHero";
+import { Reviews } from "@/components/sections/Reviews";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { site } from "@/lib/site";
 
@@ -43,11 +45,10 @@ export default function BusinessPhoneSystemsPage() {
             </>
           }
           primary={{ label: "Request a Consultation", href: "/contact-us" }}
-          secondary={{ label: "Explore Solutions", href: "#solutions" }}
         />
         <Outcomes />
-        <Solutions />
-        <Capabilities />
+        <Plans />
+        <ComparePlans />
         <MediaSplit
           id="call-flow-title"
           className="pt-20 lg:pt-28"
@@ -74,31 +75,31 @@ export default function BusinessPhoneSystemsPage() {
         <MediaSplit
           id="reliability-title"
           className="pt-20 lg:pt-28"
-          eyebrow="Reliability"
+          eyebrow="Easy &amp; Simple"
           title={
             <>
-              Built to keep you reachable,{" "}
+              Plug and play, with{" "}
               <br className="max-sm:hidden" />
-              <span className="font-bold">even when something fails.</span>
+              <span className="font-bold">self configuration.</span>
             </>
           }
-          intro="A phone system is only as dependable as the network behind it. We plan for outages before they happen, so customers can still reach you."
+          intro="Plug your phones in and they set themselves up. From there, you can manage greetings, menus and users yourself online, with our team available if you need help."
           points={[
             <>
-              <strong>Network readiness check:</strong> we review your internet
-              and network equipment, then prioritize voice traffic for clear calls.
+              <strong>Phone auto setup:</strong> desk phones set themselves up
+              when plugged in.
             </>,
             <>
-              <strong>Automatic failover:</strong> calls forward to mobile phones
-              or another location if your connection drops.
+              <strong>Admin portal:</strong> change greetings, menus and users
+              online.
             </>,
             <>
-              <strong>LTE backup internet:</strong> an optional second
-              connection that keeps phones online during an outage.
+              <strong>User portal:</strong> each user has their own login to
+              manage their settings.
             </>,
             <>
-              <strong>911 location setup:</strong> a registered location for
-              every phone and site.
+              <strong>Remote phone restart:</strong> restart a desk phone from
+              the portal.
             </>,
           ]}
           primary={{ label: "Talk to a Specialist", href: "/contact-us" }}
@@ -108,7 +109,9 @@ export default function BusinessPhoneSystemsPage() {
         />
         <Hardware />
         <Implementation />
-        <Investment />
+        <Reviews />
+        <Faq flushTop />
+        <ClosingCta />
       </main>
       <SiteFooter />
       <JsonLd

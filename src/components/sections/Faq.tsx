@@ -1,19 +1,22 @@
 import { JsonLd } from "@/components/ui/JsonLd";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { faqText, faqs } from "@/content/faq";
-import { FaqAccordion } from "./FaqAccordion";
+import { FaqSplit } from "./FaqSplit";
 
-export function Faq() {
+// The general FAQ, with its structured data, for the Business Phone Systems and
+// Pricing pages.
+export function Faq({ flushTop = false }: { flushTop?: boolean }) {
   return (
-    <section aria-labelledby="faq-title" className="py-20 lg:pt-[5.75rem] lg:pb-[8.375rem]">
-      <div className="container-page">
-        <SectionHeading id="faq-title" eyebrow="Frequently Asked Questions" align="center">
-          <span className="font-bold">Questions</span> before you grow?
-        </SectionHeading>
-
-        <FaqAccordion items={faqs} />
-      </div>
-
+    <>
+      <FaqSplit
+        id="faq-title"
+        flushTop={flushTop}
+        title={
+          <>
+            <span className="font-bold">Questions</span> before you grow?
+          </>
+        }
+        items={faqs}
+      />
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -25,6 +28,6 @@ export function Faq() {
           })),
         }}
       />
-    </section>
+    </>
   );
 }

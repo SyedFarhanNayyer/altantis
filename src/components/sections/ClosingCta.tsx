@@ -25,7 +25,7 @@ export function ClosingCta() {
           Ready to make your next connection{" "}
           <span className="font-bold">with Atlantis.</span>
         </h2>
-        <ButtonLink href="/contact" data-reveal="fade" className="mt-8 w-full sm:w-[18.875rem]">
+        <ButtonLink href="/contact-us" data-reveal="fade" className="mt-8 w-full sm:w-[18.875rem]">
           Get in Touch with Sales
         </ButtonLink>
       </div>

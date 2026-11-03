@@ -10,8 +10,8 @@ export function Reviews() {
           reviews={reviews}
           heading={
             <div>
-              <p data-reveal="fade" className="font-display text-eyebrow-lg text-orange">Customer Reviews</p>
-              <h2 id="reviews-title" data-reveal="lines" className="mt-2.5 text-h2">
+              <p data-reveal="fade" className="font-display text-eyebrow text-brand-strong">Customer Reviews</p>
+              <h2 id="reviews-title" data-reveal="lines" className="text-h2">
                 Trusted Partnerships.
                 {" "}
                 <br />
