@@ -15,8 +15,9 @@ export const media = {
     alt: "Coworkers checking a call on a smartphone together",
   },
   deskPhones: {
-    src: "/images/hw-business-desk-phone-office.jpg",
-    alt: "IP desk phone with a color screen on an office desk",
+    src: "/images/hw-yealink-desk-phone.png",
+    alt: "Yealink IP desk phone with a color screen and corded handset",
+    contain: true,
   },
   cordless: {
     src: "/images/hw-yealink-cordless-phone-base.png",

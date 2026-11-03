@@ -31,7 +31,7 @@ export default function ContactPage() {
             <span className="font-bold">phone system specialist</span>
           </>
         }
-        body="Tell us about your business and what you need, or call us during office hours. Our team is based in Ventura."
+        body="Tell us about your business and what you need, or call us during office hours."
       />
 
       <div className="container-page grid gap-14 py-20 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16 lg:py-28 xl:gap-24">
