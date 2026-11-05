@@ -29,7 +29,7 @@ export function About() {
             preconfigured phones, straightforward setup and ongoing support.
           </p>
 
-          <ButtonLink href="/contact" className="mt-10 w-full sm:w-[12.4375rem]">
+          <ButtonLink href="/contact-us" className="mt-10 w-full sm:w-[12.4375rem]">
             Get a Free Quote
           </ButtonLink>
         </div>

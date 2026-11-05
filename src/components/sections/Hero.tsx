@@ -47,7 +47,7 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4 sm:gap-5 lg:mt-11">
-            <ButtonLink href="/contact" data-intro className="w-full sm:w-[18.25rem]">
+            <ButtonLink href="/contact-us" data-intro className="w-full sm:w-[18.25rem]">
               Request a Free Consultation
             </ButtonLink>
             <ButtonLink

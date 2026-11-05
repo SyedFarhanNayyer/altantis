@@ -25,13 +25,21 @@ export function DesktopNav() {
   const baseId = useId();
   const pathname = usePathname();
 
-  // Close after navigating.
-  useEffect(() => setOpen(null), [pathname]);
+  // Close after navigating. These adjust state while rendering, so React redoes
+  // the render straight away instead of painting the old state first.
+  const [lastPathname, setLastPathname] = useState(pathname);
+  if (pathname !== lastPathname) {
+    setLastPathname(pathname);
+    setOpen(null);
+  }
 
-  useEffect(() => {
+  // Each time a panel opens or closes, drop the photo preview and remember the panel.
+  const [lastOpen, setLastOpen] = useState(open);
+  if (open !== lastOpen) {
+    setLastOpen(open);
     setPreview(null);
-    if (open !== null) setSeen((prev) => (prev.has(open) ? prev : new Set(prev).add(open)));
-  }, [open]);
+    if (open !== null && !seen.has(open)) setSeen(new Set(seen).add(open));
+  }
 
   // The header shows its glass bar while a panel is open, even over the hero.
   useEffect(() => {

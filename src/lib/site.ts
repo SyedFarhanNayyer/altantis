@@ -117,7 +117,7 @@ export const menuQuickHeading = "Get Started";
 export const menuQuickLinks: NavLink[] = [{ path: "/pricing" }, { path: "/features", label: "Features" }, { path: "/contact-us" }];
 
 // Header call to action; it replaces "Contact" in the main nav.
-export const headerCta = { label: "Contact Atlantis", href: "/contact" } as const;
+export const headerCta = { label: "Contact Atlantis", href: "/contact-us" } as const;
 
 export const freeOfferLinks = [
   { label: "Free Site Survey", href: "/free-site-survey" },
