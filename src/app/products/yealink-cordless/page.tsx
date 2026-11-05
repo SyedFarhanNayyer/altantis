@@ -1,7 +1,8 @@
-import { PlaceholderPage, placeholderMetadata } from "@/components/layout/PlaceholderPage";
+import { ProductPage, productMetadata } from "@/components/sections/products/ProductPage";
+import { w73p } from "@/content/products";
 
-export const metadata = placeholderMetadata("/products/yealink-cordless");
+export const metadata = productMetadata(w73p);
 
 export default function Page() {
-  return <PlaceholderPage path="/products/yealink-cordless" />;
+  return <ProductPage product={w73p} />;
 }

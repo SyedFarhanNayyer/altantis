@@ -8,6 +8,8 @@ type Props = {
   body?: ReactNode;
   primary?: Action;
   secondary?: Action;
+  /** Shown beside the text on desktop and below it on small screens. */
+  media?: ReactNode;
   /** In-page links shown along the bottom ("On this page"). */
   contents?: Action[];
 };
@@ -16,10 +18,11 @@ type Props = {
 // actions and an index of the page's sections so visitors can jump to what
 // they came for. Same night ground and intro sequence as the homepage hero,
 // with a smaller title.
-export function PageHero({ title, body, primary, secondary, contents }: Props) {
+export function PageHero({ title, body, primary, secondary, media, contents }: Props) {
   return (
     <section aria-labelledby="hero-title" className="bg-night text-on-dark">
       <div className={`container-page pt-36 lg:pt-44 ${contents ? "" : "pb-16 lg:pb-24"}`}>
+        <div className={media ? "grid items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-14" : ""}>
         <div className="max-w-[48rem]">
           <h1 id="hero-title" data-intro="lines" className="text-h2">
             {title}
@@ -50,6 +53,8 @@ export function PageHero({ title, body, primary, secondary, contents }: Props) {
               )}
             </div>
           )}
+        </div>
+        {media}
         </div>
 
         {contents && (

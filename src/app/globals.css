@@ -72,3 +72,13 @@
   padding-block: 0.12em;
   margin-block: -0.12em;
 }
+
+/* Fills over the time each room shows in the phone catalog's rotating tabs. */
+.tab-progress {
+  animation: tab-progress linear forwards; /* duration set where it's used */
+}
+
+@keyframes tab-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}

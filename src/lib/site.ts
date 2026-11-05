@@ -45,7 +45,7 @@ export const mainNav: NavGroup[] = [
     ],
   },
   {
-    label: "Products & Pricing",
+    label: "Products",
     description: "Yealink desk and cordless phones, and plans priced per user.",
     image: { src: "/images/guide-phone-system-signs.jpg", alt: "Business desk phone" },
     links: [
