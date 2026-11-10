@@ -20,7 +20,7 @@ export function SectionHeading({
   return (
     <div className={`${align === "center" ? "text-center" : ""} ${className}`}>
       {eyebrow && (
-        <p data-reveal="fade" className="font-display text-eyebrow text-brand-strong">{eyebrow}</p>
+        <p data-reveal="fade" className="font-display text-eyebrow text-subhead">{eyebrow}</p>
       )}
       <h2 id={id} data-reveal="lines" className="text-h2 text-ink">
         {children}

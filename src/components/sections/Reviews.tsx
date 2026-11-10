@@ -1,5 +1,5 @@
 import { AvatarGroup } from "@/components/ui/AvatarGroup";
-import { reviews } from "@/content/reviews";
+import { featuredReviews } from "@/content/reviews";
 import { ReviewCarousel } from "./ReviewCarousel";
 
 export function Reviews() {
@@ -7,10 +7,10 @@ export function Reviews() {
     <section aria-labelledby="reviews-title" className="py-20 lg:pt-[5.5625rem] lg:pb-[8.125rem]">
       <div className="container-page">
         <ReviewCarousel
-          reviews={reviews}
+          reviews={featuredReviews}
           heading={
             <div>
-              <p data-reveal="fade" className="font-display text-eyebrow text-brand-strong">Customer Reviews</p>
+              <p data-reveal="fade" className="font-display text-eyebrow text-subhead">Customer Reviews</p>
               <h2 id="reviews-title" data-reveal="lines" className="text-h2">
                 Trusted Partnerships.
                 {" "}

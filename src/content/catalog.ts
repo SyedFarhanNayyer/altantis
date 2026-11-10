@@ -92,3 +92,44 @@ export const catalogFaqs: Faq[] = [
     link: { href: "/contact-us", label: "Contact Atlantis" },
   },
 ];
+
+// The full phone list supplied by Atlantis. `href` links the models that have
+// their own page.
+export type PhoneListing = { name: string; access: "Yes" | "Not applicable"; href?: string };
+
+export const phoneList: { brand: string; phones: PhoneListing[] }[] = [
+  {
+    brand: "Grandstream",
+    phones: [
+      "GRP2612",
+      "GRP2614",
+      "GXP-1610",
+      "GXP-1615",
+      "GXP-1620",
+      "GXP-1625",
+      "GXP-1628",
+      "GXP-1630",
+      "GXP-1760W",
+      "GXP-1780",
+      "GXP-1782",
+      "GXP-2130",
+      "GXP-2135",
+      "GXP-2140",
+      "GXP-2160",
+      "GXP-2170",
+    ].map((name) => ({ name, access: "Yes" })),
+  },
+  {
+    brand: "Yealink",
+    phones: [
+      { name: "SIP-T53", access: "Yes" },
+      { name: "SIP-T53W", access: "Yes", href: t53w.path },
+      { name: "SIP-T54W", access: "Yes", href: t54w.path },
+      { name: "SIP-T57W", access: "Yes" },
+      { name: "W70B", access: "Not applicable" },
+      { name: "W73P", access: "Not applicable", href: w73p.path },
+      { name: "W80DM", access: "Not applicable" },
+      { name: "W90DM", access: "Not applicable" },
+    ],
+  },
+];

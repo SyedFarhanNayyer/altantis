@@ -13,7 +13,7 @@ type Props = {
   intro: ReactNode;
   points: ReactNode[];
   primary: Action;
-  secondary: Action;
+  secondary?: Action;
   image: { src: string; alt: string };
   imageSide: "left" | "right";
   /** Shows a play button over the photo. Visual only until a video is supplied. */
@@ -71,9 +71,11 @@ export function MediaSplit({
             <ButtonLink href={primary.href} className="w-full sm:w-auto sm:px-9">
               {primary.label}
             </ButtonLink>
-            <ButtonLink href={secondary.href} variant="outline-brand" className="w-full sm:w-auto sm:px-8">
-              {secondary.label}
-            </ButtonLink>
+            {secondary && (
+              <ButtonLink href={secondary.href} variant="outline-brand" className="w-full sm:w-auto sm:px-8">
+                {secondary.label}
+              </ButtonLink>
+            )}
           </div>
         </div>
 

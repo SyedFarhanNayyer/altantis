@@ -77,7 +77,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                   addressCountry: business.address.country,
                 },
                 hasMap: business.address.mapUrl,
-                areaServed: { "@type": "AdministrativeArea", name: "Ventura County, California" },
+                areaServed: { "@type": "Country", name: "United States" },
                 openingHoursSpecification: officeHours
                   .filter((d) => d.opens)
                   .map((d) => ({

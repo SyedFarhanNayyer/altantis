@@ -8,7 +8,7 @@ export function ContactCard({ title, className = "" }: { title: string; classNam
     <div className={`rounded-[1.25rem] bg-sand p-6 lg:p-8 ${className}`}>
       <p className="font-display text-title-lg font-bold">{title}</p>
       <p className="mt-2 text-body-sm text-ink/80">
-        Talk to a local specialist, {business.hoursSummary}.
+        Talk to a specialist, {business.hoursSummary}.
       </p>
       <dl className="mt-6 space-y-4">
         <div>

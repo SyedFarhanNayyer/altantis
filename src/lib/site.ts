@@ -3,11 +3,11 @@ import type { NavGroup, NavLink } from "./pages";
 export const site = {
   name: "Atlantis",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  title: "Business Phone Systems in California",
+  title: "Business Phone Systems for Your Business",
   description:
-    "Atlantis installs and supports business phone systems across California. Answer every call at the desk, on a cell or after hours. Atlantis team since 1984.",
+    "Atlantis configures, ships and supports business phone systems nationwide. Answer every call at the desk, on a cell or after hours. Atlantis team since 1984.",
   foundingYear: 1984,
-  region: "California",
+  region: "United States",
 };
 
 // Header mega menus, from the approved sitemap. Labels come from
@@ -86,7 +86,7 @@ export const mainNav: NavGroup[] = [
   },
   {
     label: "IT Services",
-    description: "Managed IT, networks, cabling and security from the same local team.",
+    description: "Managed IT, networks, cabling and security from the same Atlantis team.",
     image: { src: "/images/business-team-coworking.png", alt: "Team working in a connected office" },
     links: [
       { path: "/it-services" },
@@ -99,7 +99,7 @@ export const mainNav: NavGroup[] = [
   },
   {
     label: "Company",
-    description: "A Ventura County business telecom team since 1984.",
+    description: "A business telecom team since 1984.",
     image: { src: "/images/atlantis-team-reviewing-screen.png", alt: "Atlantis team reviewing a project on screen" },
     links: [
       { path: "/about-us" },
@@ -120,7 +120,6 @@ export const menuQuickLinks: NavLink[] = [{ path: "/pricing" }, { path: "/featur
 export const headerCta = { label: "Contact Atlantis", href: "/contact-us" } as const;
 
 export const freeOfferLinks = [
-  { label: "Free Site Survey", href: "/free-site-survey" },
   { label: "Free Copper Line Audit", href: "/copper-line-audit" },
   { label: "Free Quote Comparison", href: "/quote-comparison" },
 ] as const;

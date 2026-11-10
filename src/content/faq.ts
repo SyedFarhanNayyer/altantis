@@ -1,5 +1,5 @@
-// Only the first answer comes from the Figma file. The rest are drafts built
-// from claims made elsewhere on the site — confirm them with Atlantis.
+// Answers for pricing, switching, number transfer, timeline, outages and growth
+// come from the Atlantis website review.
 
 // Longer answers follow the lead `answer` as extra paragraphs and lists,
 // with an optional link to the page that covers the topic in full.
@@ -23,7 +23,7 @@ const whatIs: Faq = {
   more: [
     {
       type: "p",
-      text: "Most systems today run in the cloud over your internet connection, so they include features that once needed expensive on-site equipment:",
+      text: "Most systems today run in the cloud over your internet connection, so they include features that once needed expensive equipment in the office:",
     },
     {
       type: "ul",
@@ -37,7 +37,7 @@ const whatIs: Faq = {
     },
     {
       type: "p",
-      text: "Atlantis plans the setup with your team, preconfigures the phones and supports the system after it’s installed.",
+      text: "Atlantis configures your phones to your specifications, ships them ready to plug in and supports the system after setup.",
     },
   ],
   link: { href: "/business-phone-systems", label: "Explore business phone systems" },
@@ -45,21 +45,25 @@ const whatIs: Faq = {
 const cost: Faq = {
   question: "How much does a business phone system cost?",
   answer:
-    "Most systems include a monthly per-user fee plus one-time costs for phones and installation. Your price depends on users, locations, cabling and features. You’ll get one itemized quote after a free site survey.",
+    "Most plans include a monthly per-user fee plus a one-time cost for phones. Your price depends on the number of users, locations, the phones you choose, and the features you need. You’ll receive one itemized quote before you place your order.",
   more: [
     { type: "p", text: "The things that affect your price most are:" },
     {
       type: "ul",
       items: [
-        "How many people need a phone, app or extension",
-        "The number of locations and whether new cabling is needed",
-        "The type of phones you choose: desk, cordless or conference",
-        "Features such as call recording, queues or integrations",
+        "How many people need a phone, app, or extension",
+        "The number of locations you need to connect",
+        "The type of phones you choose: desk, cordless, or conference",
+        "Features such as call recording, queues, or integrations",
       ],
     },
     {
       type: "p",
-      text: "Your proposal lists the monthly service, the one-time setup and everything included, so there are no surprises after installation.",
+      text: "Your quote lists the monthly service, the one-time equipment cost, and everything included in your plan.",
+    },
+    {
+      type: "p",
+      text: "Once you place your order, we configure your phones to your specifications and ship them directly to you. When they arrive, simply plug them in and they’re ready to use.",
     },
   ],
   link: { href: "/pricing", label: "See how pricing works" },
@@ -67,22 +71,22 @@ const cost: Faq = {
 const downtime: Faq = {
   question: "Will switching cause downtime?",
   answer:
-    "No. Your old service stays live while we install and test the new system. We only cancel the old lines after every line passes testing.",
+    "We work to keep the transition as smooth as possible. We recommend keeping your current service active until your new phones are set up and your number transfer is complete.",
   more: [
     {
       type: "p",
-      text: "A typical changeover runs in this order: site survey, design and proposal, installation, number transfer, then testing and staff training. Your phones keep working at every step, and we schedule the go-live date around your busiest days.",
+      text: "A typical changeover follows these steps: you place your order, we configure your phones to your specifications, we ship them to you, and you plug them in. Your existing numbers are then transferred to our service, and we coordinate the transfer date with you so you can plan around your busiest times.",
     },
   ],
 };
 const keepNumbers: Faq = {
   question: "Can I keep my existing phone numbers?",
   answer:
-    "Yes. We manage the number transfer for you, so customers keep dialing the same numbers and reach you without interruption.",
+    "In most cases, yes. We handle the number transfer process for you, so your customers can continue dialing the same numbers they already know.",
   more: [
     {
       type: "p",
-      text: "This includes your main line, direct numbers and fax numbers. Your old service stays active until the transfer is complete, so no calls are lost in between.",
+      text: "This can include your main line, direct numbers, and fax numbers. We recommend keeping your current service active until the transfer is complete, and we’ll coordinate the transfer date with you.",
     },
   ],
   link: { href: "/number-porting", label: "Learn about number transfers" },
@@ -90,11 +94,11 @@ const keepNumbers: Faq = {
 const timeline: Faq = {
   question: "How quickly can we be up and running?",
   answer:
-    "It depends on how many users, phones and locations you have. After the free site survey, you’ll get a clear timeline along with your quote.",
+    "It depends on the number of users, phones, and locations you have. We’ll provide an estimated timeline along with your quote.",
   more: [
     {
       type: "p",
-      text: "For most single-site offices, installation takes about a day once the equipment arrives. Larger or multi-location setups are planned in stages so each site goes live smoothly.",
+      text: "Once you place your order, we configure your phones to your specifications and ship them to you. When they arrive, simply plug them in. Number transfer times vary by carrier, and we’ll keep you updated throughout the process. For multi-location setups, we can coordinate shipping and setup for each site based on your schedule.",
     },
   ],
 };
@@ -112,27 +116,27 @@ const mobile: Faq = {
 const outage: Faq = {
   question: "What happens if our internet goes down?",
   answer:
-    "Calls can forward automatically to cell phones or another office, so customers still reach someone. We’ll plan the right backup for your business during the site survey.",
+    "You can set up call forwarding so calls go to a cell phone or another number when your phones are offline. This can be configured by you through the portal or by our team on request. Your team can also make and take business calls from the mobile app using your business number.",
 };
 const growth: Faq = {
   question: "Can the system grow with us?",
   answer:
-    "Yes. You can add users, phones and new locations to the same system, and every office can dial coworkers by extension.",
+    "Yes. You can add users, phones, and new locations as your business grows, and your team can reach coworkers by extension.",
   more: [
     {
       type: "p",
-      text: "Adding a new employee usually means assigning an extension and a phone or app. There’s no new equipment to install at the office.",
+      text: "Adding a new employee means assigning them an extension and either a new desk phone, which we configure and ship to you, or access through the mobile or web app.",
     },
   ],
 };
 const support: Faq = {
-  question: "Do you support us after installation?",
+  question: "Do you support us after setup?",
   answer:
-    "Yes. Our own local technicians support your system after installation, so you always know who’s looking after it.",
+    "Yes. Our team supports your system after your phones are up and running, so you always know who’s looking after it.",
   more: [
     {
       type: "p",
-      text: "When you need a change, such as a new greeting, a new employee or different after-hours rules, you call the same team that installed your system.",
+      text: "When you need a change, such as a new greeting, a new employee or different after-hours rules, you can make it yourself in the portal or ask our team to do it for you.",
     },
   ],
 };
@@ -148,14 +152,9 @@ export const faqGroups: { id: string; title: string; items: Faq[] }[] = [
     items: [
       cost,
       {
-        question: "Is there a charge for the site survey?",
-        answer:
-          "No. The site survey is free. We review your building, cabling, network, current bill and how calls move through your business, then send an itemized proposal.",
-      },
-      {
         question: "Are there hidden fees?",
         answer:
-          "No. Your proposal lists the monthly service, the one-time setup and everything included, before any work begins.",
+          "No. Your quote lists the monthly service, the one-time equipment cost and everything included in your plan, before you place your order.",
       },
     ],
   },
@@ -169,7 +168,7 @@ export const faqGroups: { id: string; title: string; items: Faq[] }[] = [
       {
         question: "Will you train our staff?",
         answer:
-          "Yes. Before your old service is cancelled, we show your team how to answer, transfer and forward calls, check voicemail and use the features you’ll rely on day to day.",
+          "Yes. Our team can show your staff how to answer, transfer and forward calls, check voicemail and use the features you’ll rely on day to day.",
       },
       {
         question: "We still have copper phone lines. What should we do?",
@@ -186,9 +185,9 @@ export const faqGroups: { id: string; title: string; items: Faq[] }[] = [
       growth,
       mobile,
       {
-        question: "Which phones do you install?",
+        question: "Which phones do you offer?",
         answer:
-          "We supply and install Yealink desk, cordless and conference phones, plus paging speakers and door intercoms. Every device is mounted, programmed and tested by our technicians.",
+          "We supply Yealink desk, cordless and conference phones. Every phone is configured to your specifications and tested before it ships to you.",
       },
       {
         question: "How is 911 handled?",
@@ -206,7 +205,7 @@ export const faqGroups: { id: string; title: string; items: Faq[] }[] = [
       {
         question: "What areas do you serve?",
         answer:
-          "We’re based in Ventura and work with businesses across Ventura County and the surrounding areas of California.",
+          "We’re based in Ventura, California, and serve businesses nationwide. Your phones are configured and shipped to you, ready to plug in.",
       },
     ],
   },

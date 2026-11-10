@@ -29,14 +29,23 @@ export default function PricingPage() {
             Business Phone <span className="font-bold">Plans</span>
           </>
         }
-        body="Pick the plan that fits your team. Every plan includes a business number, texting, mobile app, and phone menu."
+        body="Pick the plan that fits your team. Every plan includes a business number, mobile app, and phone menu."
         primary={{ label: "Contact Atlantis", href: "/contact-us" }}
         secondary={{ label: "Features", href: "#compare" }}
       />
       <Plans standalone />
       <ComparePlans allOpen />
       <Faq />
-      <ClosingCta />
+      <ClosingCta
+        eyebrow="Simple Setup. Plug and Play."
+        image="/images/business-team-reviewing-laptop.jpg"
+        imagePosition="object-[center_40%]"
+        title={
+          <>
+            Let’s get your business connected <span className="font-bold">with Atlantis.</span>
+          </>
+        }
+      />
     </PageShell>
   );
 }

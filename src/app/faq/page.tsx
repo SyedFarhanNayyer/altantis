@@ -9,7 +9,7 @@ import { webPageSchema } from "@/lib/schema";
 const path = "/faq";
 const title = "Business Phone System FAQ | Atlantis Utility";
 const description =
-  "Answers about business phone system pricing, switching without downtime, keeping your numbers, equipment, 911 setup and local support from Atlantis.";
+  "Answers about business phone system pricing, switching without downtime, keeping your numbers, equipment, 911 setup and support from Atlantis.";
 
 export const metadata: Metadata = {
   title: { absolute: title },

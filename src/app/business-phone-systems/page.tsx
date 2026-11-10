@@ -19,9 +19,9 @@ import { JsonLd } from "@/components/ui/JsonLd";
 import { site } from "@/lib/site";
 
 const path = "/business-phone-systems";
-const title = "Business Phone Systems in Ventura County | Atlantis Utility";
+const title = "Business Phone Systems, Configured and Shipped | Atlantis Utility";
 const description =
-  "Hosted VoIP, SIP trunking and system conversions for California businesses. Designed around your call flow, installed by local technicians, supported long term.";
+  "Business phone systems configured to your specifications and shipped ready to plug in. Mobile, desktop and video calling, with support from the Atlantis team.";
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -52,23 +52,30 @@ export default function BusinessPhoneSystemsPage() {
         <MediaSplit
           id="call-flow-title"
           className="pt-20 lg:pt-28"
-          eyebrow="The Atlantis Difference"
+          eyebrow="The Real Difference"
           title={
             <>
-              Designed with your team,{" "}
+              Designed to Help You{" "}
               <br className="max-sm:hidden" />
-              <span className="font-bold">not from a template.</span>
+              <span className="font-bold">Grow Your Business</span>
             </>
           }
-          intro="Before anything is installed, we map how calls should move through your business: who answers first, what happens when lines are busy, and where calls go after hours. Then we build it, test every path and train your staff."
+          intro="Atlantis business phone systems make it easy to stay focused on your customers. Take calls from anywhere using your business number, and give your team the flexibility to call, text, or meet by video wherever they work."
           points={[
-            "Greetings and menus written with you",
-            "Ring order set for each department",
-            "After-hours and holiday rules planned in advance",
-            "Every route tested before go-live",
+            <>
+              <strong>Mobile app:</strong> make and receive business calls and
+              send texts from your smartphone.
+            </>,
+            <>
+              <strong>Desktop app:</strong> make and answer business calls
+              directly from your computer.
+            </>,
+            <>
+              <strong>Video conferencing:</strong> meet face to face with
+              customers, colleagues, and partners from wherever you work.
+            </>,
           ]}
-          primary={{ label: "Book a Site Survey", href: "/contact-us" }}
-          secondary={{ label: "See Our Process", href: "#process" }}
+          primary={{ label: "See Our Process", href: "#process" }}
           image={media.callFlow}
           imageSide="left"
         />
@@ -80,30 +87,30 @@ export default function BusinessPhoneSystemsPage() {
             <>
               Plug and play, with{" "}
               <br className="max-sm:hidden" />
-              <span className="font-bold">self configuration.</span>
+              <span className="font-bold">ability to manage.</span>
             </>
           }
-          intro="Plug your phones in and they set themselves up. From there, you can manage greetings, menus and users yourself online, with our team available if you need help."
+          intro="Connect your preconfigured desk phones to your network to get started. From the online portal, administrators can manage company-wide settings, and employees can update their own preferences. The Atlantis team is available when you need help."
           points={[
             <>
-              <strong>Phone auto setup:</strong> desk phones set themselves up
-              when plugged in.
+              <strong>Automatic phone setup:</strong> supported desk phones
+              apply their assigned settings when connected to your network.
             </>,
             <>
-              <strong>Admin portal:</strong> change greetings, menus and users
-              online.
+              <strong>Administrator portal:</strong> update company greetings,
+              change phone menus, and manage users and extensions.
             </>,
             <>
-              <strong>User portal:</strong> each user has their own login to
-              manage their settings.
+              <strong>Employee portal:</strong> each employee has a personal
+              login to manage call forwarding, voicemail, and other extension
+              settings.
             </>,
             <>
-              <strong>Remote phone restart:</strong> restart a desk phone from
-              the portal.
+              <strong>Remote phone restart:</strong> authorized administrators
+              can restart supported desk phones remotely.
             </>,
           ]}
           primary={{ label: "Talk to a Specialist", href: "/contact-us" }}
-          secondary={{ label: "Explore Business Internet", href: "/it-services" }}
           image={media.reliability}
           imageSide="right"
         />
@@ -111,7 +118,7 @@ export default function BusinessPhoneSystemsPage() {
         <Implementation />
         <Reviews />
         <Faq flushTop />
-        <ClosingCta />
+        <ClosingCta image="/images/business-owner-mobile-call.jpg" imagePosition="object-[center_30%]" />
       </main>
       <SiteFooter />
       <JsonLd
@@ -119,11 +126,11 @@ export default function BusinessPhoneSystemsPage() {
           "@context": "https://schema.org",
           "@type": "Service",
           name: "Business Phone Systems",
-          serviceType: "Business phone system installation and support",
+          serviceType: "Business phone system configuration and support",
           description,
           url: `${site.url}${path}`,
           provider: { "@id": `${site.url}/#organization` },
-          areaServed: { "@type": "AdministrativeArea", name: "Ventura County, California" },
+          areaServed: { "@type": "Country", name: "United States" },
         }}
       />
       {/* Last in the tree: their effects run once every section above has hydrated. */}

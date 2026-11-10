@@ -31,7 +31,7 @@ export function Plans({ standalone = false }: { standalone?: boolean }) {
               </SectionHeading>
               <p data-reveal="fade" className="mt-3 max-w-[38rem] text-body">
                 Pick the plan that fits your team. Every plan includes a business
-                number, texting, mobile app, and phone menu.
+                number, mobile app, and phone menu.
               </p>
             </div>
             <ButtonLink href="#compare" variant="outline-brand" data-reveal="fade" className="w-full shrink-0 sm:w-auto sm:px-9">

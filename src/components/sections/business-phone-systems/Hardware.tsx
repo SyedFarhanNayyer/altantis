@@ -31,11 +31,11 @@ export function Hardware() {
             <SectionHeading id="hardware-title" eyebrow="Hardware">
               Professional equipment,{" "}
               <br className="max-sm:hidden" />
-              <span className="font-bold">installed and ready to use.</span>
+              <span className="font-bold">configured and ready to use.</span>
             </SectionHeading>
             <p data-reveal="fade" className="mt-3 max-w-[33.4375rem] text-body">
-              Every device is supplied, mounted, programmed and tested by our
-              technicians.
+              Every device is configured to your specifications and tested
+              before it ships to you.
             </p>
           </div>
           <ButtonLink href="/products" data-reveal="fade" className="w-full sm:w-auto sm:px-9">

@@ -6,9 +6,9 @@ import { webPageSchema } from "@/lib/schema";
 import { business } from "@/lib/site";
 
 const path = "/contact-us";
-const title = "Contact Atlantis | Business Phone Systems in Ventura County";
+const title = "Contact Atlantis | Business Phone Systems";
 const description =
-  "Call, email or send a message to Atlantis about a new business phone system, copper line replacement or support. Local team in Ventura, CA.";
+  "Call, email or send a message to Atlantis about a new business phone system, copper line replacement or support. Based in Ventura, CA.";
 
 export const metadata: Metadata = {
   title: { absolute: title },

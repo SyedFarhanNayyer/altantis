@@ -5,6 +5,7 @@ import { ClosingCta } from "@/components/sections/ClosingCta";
 import { FaqSplit } from "@/components/sections/FaqSplit";
 import { PageHero } from "@/components/sections/PageHero";
 import { OfficeFloorPlan } from "@/components/sections/products/OfficeFloorPlan";
+import { PhoneList } from "@/components/sections/products/PhoneList";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { catalogFaqs, catalogPhones, catalogRows } from "@/content/catalog";
 import { faqText } from "@/content/faq";
@@ -118,6 +119,8 @@ export default function ProductsPage() {
           </div>
         </div>
       </section>
+
+      <PhoneList />
 
       <FaqSplit
         id="catalog-faq-title"

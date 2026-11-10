@@ -27,12 +27,21 @@ export default function FeaturesPage() {
             All <span className="font-bold">Features</span>
           </>
         }
-        body="Everything an Atlantis phone system can do, from routing calls to running a call center. What’s included depends on your plan."
+        body="Everything your business needs to manage calls, connect your team, and serve customers, all in one system. Features vary by plan."
         primary={{ label: "Compare Plans", href: "/pricing#compare" }}
         secondary={{ label: "Contact Atlantis", href: "/contact-us" }}
       />
       <FeatureDirectory />
-      <ClosingCta />
+      <ClosingCta
+        eyebrow="Talk to Our Team"
+        image="/images/office-employee-desk-phone-call.jpg"
+        imagePosition="object-[75%_center]"
+        title={
+          <>
+            Let’s find the right phone system <span className="font-bold">for your business.</span>
+          </>
+        }
+      />
     </PageShell>
   );
 }

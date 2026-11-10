@@ -1,14 +1,11 @@
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const steps = [
-  {
-    title: "Proposal and Configuration",
-    body: "You receive an itemized proposal in plain language, and we configure your phones and call flow.",
-  },
-  { title: "Self Installation", body: "Set up your preconfigured phones yourself, with our team on hand to help." },
-  { title: "Shipping", body: "Your phones are shipped to your location, ready to plug in." },
-  { title: "Testing", body: "Every line and call route is tested to confirm it works." },
-  { title: "Handover", body: "Your staff learns the system, and our team stays available for support." },
+  { title: "Proposal", body: "You receive one itemized quote in plain language before you place your order." },
+  { title: "Configurations", body: "We configure your phones, numbers and call flow to your specifications." },
+  { title: "Testing", body: "Every phone and call route is tested to confirm it works." },
+  { title: "Shipping", body: "Your phones are shipped directly to you, ready to plug in." },
+  { title: "Handover and Support", body: "Plug in and start calling. Our team stays available when you need help." },
 ];
 
 // A single timeline on the sand ground: the line is the sequence, so the
@@ -54,9 +51,9 @@ export function Implementation() {
         </ol>
 
         <p data-reveal="fade" className="mt-12 border-t border-line pt-8 text-body lg:mt-16">
-          <span className="font-bold">Typical timeline:</span> most single-site
-          offices are installed in about a day once equipment arrives. Number
-          transfers are scheduled with your current carrier.
+          <span className="font-bold">Typical timeline:</span> we’ll give you an
+          estimated timeline with your quote. Number transfer times vary by
+          carrier, and we coordinate the transfer date with you.
         </p>
       </div>
     </section>

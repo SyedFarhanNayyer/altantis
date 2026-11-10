@@ -2,7 +2,7 @@ import { Check } from "@phosphor-icons/react/ssr";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { compareGroups, plans, type Cell } from "@/content/plans";
-import { CompareGroupToggle } from "./CompareGroupToggle";
+import { CompareExpandAll, CompareGroupToggle } from "./CompareGroupToggle";
 
 const AddOn = () => (
   <span className="inline-block rounded-full border border-brand-strong px-2.5 py-0.5 text-xs font-bold whitespace-nowrap text-brand-strong">
@@ -48,10 +48,11 @@ export function ComparePlans({ allOpen = false }: { allOpen?: boolean }) {
           Compare <span className="font-bold">Plans</span>
         </SectionHeading>
         <p data-reveal="fade" className="mt-3 max-w-[44rem] text-body">
-          See what’s included, what can be added, and what’s not available on each plan.
+          From essentials to full-scale solutions, find your fit.
         </p>
 
-        <ul className="mt-6 flex flex-wrap gap-x-7 gap-y-2 text-small">
+        <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <ul className="flex flex-wrap gap-x-7 gap-y-2 text-small">
           <li className="flex items-center gap-2">
             <Included />
             Included
@@ -65,6 +66,8 @@ export function ComparePlans({ allOpen = false }: { allOpen?: boolean }) {
             Not available
           </li>
         </ul>
+        <CompareExpandAll />
+        </div>
 
         <div
           role="region"
@@ -72,7 +75,7 @@ export function ComparePlans({ allOpen = false }: { allOpen?: boolean }) {
           tabIndex={0}
           className="relative mt-8 overflow-x-auto lg:mt-10 lg:overflow-visible"
         >
-          <table className="w-full min-w-[39rem] table-fixed border-separate border-spacing-0">
+          <table id="compare-table" className="w-full min-w-[39rem] table-fixed border-separate border-spacing-0">
             <caption className="sr-only">Features included in each business phone plan</caption>
             <thead>
               <tr>

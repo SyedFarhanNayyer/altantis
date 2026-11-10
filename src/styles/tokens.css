@@ -29,6 +29,7 @@
   --color-brand-strong: #c43000; /* section sub headings, brand-coloured text below 24px (meets 4.5:1) */
   --color-amber: #f3a600; /* stats, stars, check icons */
   --color-orange: #d56d00; /* FAQ list markers */
+  --color-subhead: #aa5500; /* orange section sub headings (meets 4.5:1 on sand) */
   --color-brand-from: #df3400; /* gradient start (left) */
   --color-brand-to: #f3a600; /* gradient end (right) */
 

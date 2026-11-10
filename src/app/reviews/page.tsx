@@ -11,7 +11,7 @@ import { business } from "@/lib/site";
 const path = "/reviews";
 const title = "Customer Reviews | Atlantis Business Phone Systems";
 const description =
-  "Read what Ventura County businesses say about Atlantis phone systems, installation and local support, and share your own experience on Google.";
+  "Read what businesses say about Atlantis phone systems, setup and support, and share your own experience on Google.";
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   alternates: { canonical: path },
   openGraph: { url: path, title, description },
   twitter: { title, description },
-  // The reviews below are placeholders; index the page once real ones are in.
+  // Index the page once each review's star rating is confirmed.
   robots: { index: false, follow: true },
 };
 
@@ -34,7 +34,7 @@ export default function ReviewsPage() {
             <span className="font-bold">about working with Atlantis</span>
           </>
         }
-        body="Reviews from businesses whose phone systems we’ve installed and support."
+        body="Reviews from businesses whose phone systems we’ve set up and support."
         primary={{ label: "Read Our Google Reviews", href: business.reviewsUrl }}
         secondary={{ label: "Submit Review", href: business.reviewsUrl }}
       />
@@ -44,9 +44,10 @@ export default function ReviewsPage() {
           <h2 id="all-reviews-title" className="sr-only">
             All reviews
           </h2>
-          <ul data-reveal="stagger" className="grid gap-[1.875rem] md:grid-cols-2 lg:grid-cols-3">
+          {/* Columns, so a one-line review doesn't stretch to match a long one beside it. */}
+          <ul className="gap-[1.875rem] md:columns-2 lg:columns-3">
             {reviews.map((r, i) => (
-              <li key={i} className="rounded-[1.25rem] border border-line px-5 pt-[1.5625rem] pb-8 sm:px-8">
+              <li key={i} className="mb-[1.875rem] break-inside-avoid rounded-[1.25rem] border border-line px-5 pt-[1.5625rem] pb-8 sm:px-8">
                 <ReviewCard review={r} />
               </li>
             ))}
@@ -63,7 +64,7 @@ export default function ReviewsPage() {
               <span className="font-bold">Tell others how it went.</span>
             </h2>
             <p data-reveal="fade" className="mt-4 max-w-[35rem] text-body">
-              Your review helps other local businesses choose a phone system with
+              Your review helps other businesses choose a phone system with
               confidence, and tells our team what to keep doing.
             </p>
           </div>
