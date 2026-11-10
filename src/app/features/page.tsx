@@ -35,7 +35,6 @@ export default function FeaturesPage() {
       <ClosingCta
         eyebrow="Talk to Our Team"
         image="/images/office-employee-desk-phone-call.jpg"
-        imagePosition="object-[75%_center]"
         title={
           <>
             Let’s find the right phone system <span className="font-bold">for your business.</span>

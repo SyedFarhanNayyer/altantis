@@ -54,6 +54,7 @@ export default function IndustriesPage() {
       <div className="container-page divide-y divide-line-light py-20 lg:py-28">
         {industries.map((industry, i) => {
           const id = industryAnchor(industry.href);
+          const image = industry.image ?? industryPlaceholderImage;
           return (
             <section
               key={industry.href}
@@ -64,8 +65,8 @@ export default function IndustriesPage() {
             >
               <div className={`relative aspect-[3/2] overflow-hidden rounded-[0.625rem] ${i % 2 ? "lg:order-last" : ""}`}>
                 <Image
-                  src={industryPlaceholderImage.src}
-                  alt={industryPlaceholderImage.alt}
+                  src={image.src}
+                  alt={image.alt}
                   fill
                   unoptimized
                   sizes="(min-width: 1024px) 60vw, 100vw"

@@ -145,7 +145,7 @@ export default function BusinessVoipPage() {
         items={voipFaqs}
       />
 
-      <ClosingCta image="/images/business-team-discussing-voip-plan.jpg" imagePosition="object-[center_25%]" />
+      <ClosingCta image="/images/business-team-discussing-voip-plan.jpg" imagePosition="object-[center_30%]" />
     </PageShell>
   );
 }

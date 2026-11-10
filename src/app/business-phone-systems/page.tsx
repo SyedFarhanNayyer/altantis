@@ -118,7 +118,7 @@ export default function BusinessPhoneSystemsPage() {
         <Implementation />
         <Reviews />
         <Faq flushTop />
-        <ClosingCta image="/images/business-owner-mobile-call.jpg" imagePosition="object-[center_30%]" />
+        <ClosingCta image="/images/business-owner-mobile-call.jpg" />
       </main>
       <SiteFooter />
       <JsonLd

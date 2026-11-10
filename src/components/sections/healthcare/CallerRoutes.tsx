@@ -10,12 +10,12 @@ export function CallerRoutes() {
       <div className="container-page grid gap-10 lg:grid-cols-2 lg:gap-16">
         <div className="relative aspect-[3/2] overflow-hidden rounded-[0.625rem] lg:aspect-auto">
           <Image
-            src="/images/bps-employee-answering-business-call.jpg"
-            alt="Office employee at her desk answering a call on her phone"
+            src="/images/doctor-greeting-patients-clinic.jpg"
+            alt="Doctor shaking hands with an older couple at a clinic desk"
             fill
             unoptimized
             sizes="(min-width: 1024px) 50vw, 100vw"
-            className="object-cover object-[40%_center]"
+            className="object-cover"
           />
         </div>
         <div>

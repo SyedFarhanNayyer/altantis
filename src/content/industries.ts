@@ -8,10 +8,14 @@ export const industryPlaceholderImage = {
 
 export const industryAnchor = (href: string) => `industry-${href.split("/").pop()}`;
 
-export const industries: { name: string; href: string; body: string }[] = [
+export const industries: { name: string; href: string; body: string; image?: { src: string; alt: string } }[] = [
   {
     name: "Healthcare",
     href: "/industries/healthcare",
+    image: {
+      src: "/images/doctor-greeting-patients-clinic.jpg",
+      alt: "Doctor shaking hands with an older couple at a clinic desk",
+    },
     body: "Patients call about appointments, billing and refills while your front desk is checking people in. Send each call to the right person, and choose what callers hear when the office is closed.",
   },
   {

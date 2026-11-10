@@ -38,8 +38,8 @@ export default function PricingPage() {
       <Faq />
       <ClosingCta
         eyebrow="Simple Setup. Plug and Play."
-        image="/images/business-team-reviewing-laptop.jpg"
-        imagePosition="object-[center_40%]"
+        image="/images/support-agent-headset-call.jpg"
+        imagePosition="object-[center_20%]"
         title={
           <>
             Let’s get your business connected <span className="font-bold">with Atlantis.</span>
