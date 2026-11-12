@@ -1,45 +1,43 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { ease } from "@/lib/animation/motion";
+import { useEffect, useId, useRef } from "react";
 import { gsap } from "@/lib/gsap";
 
-// Custom cursor: a dot that tracks the pointer exactly and a ring that
-// follows with weight. Over links and buttons the ring opens up and the
-// dot hides. Blend mode "difference" keeps it visible on light and dark
-// sections. Mouse/trackpad only, and off under reduced motion — the native
-// cursor stays in every other case.
+// Custom cursor: a simple brand-orange arrow, outlined in white so it reads on
+// light and dark sections, that tracks the pointer exactly (its tip is the
+// hotspot). Over text fields it hides so the native text caret shows.
+// Mouse/trackpad only, and off under reduced motion: the native cursor stays
+// in every other case.
 export function Cursor() {
-  const dot = useRef<HTMLDivElement>(null);
-  const ring = useRef<HTMLDivElement>(null);
+  const arrow = useRef<HTMLDivElement>(null);
+  const gradientId = useId();
 
   useEffect(() => {
     const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!fine || reduce || !dot.current || !ring.current) return;
+    if (!fine || reduce || !arrow.current) return;
 
     const root = document.documentElement;
     root.classList.add("has-cursor");
 
-    const dotX = gsap.quickTo(dot.current, "x", { duration: 0.12, ease: "power2.out" });
-    const dotY = gsap.quickTo(dot.current, "y", { duration: 0.12, ease: "power2.out" });
-    const ringX = gsap.quickTo(ring.current, "x", { duration: 0.55, ease: ease.soft });
-    const ringY = gsap.quickTo(ring.current, "y", { duration: 0.55, ease: ease.soft });
-    const both = [dot.current, ring.current];
+    const el = arrow.current;
+    const x = gsap.quickSetter(el, "x", "px");
+    const y = gsap.quickSetter(el, "y", "px");
+    let hidden = false;
 
     const move = (e: PointerEvent) => {
-      gsap.to(both, { autoAlpha: 1, duration: 0.3, overwrite: "auto" });
-      dotX(e.clientX);
-      dotY(e.clientY);
-      ringX(e.clientX);
-      ringY(e.clientY);
+      x(e.clientX);
+      y(e.clientY);
+      if (!hidden) gsap.to(el, { autoAlpha: 1, duration: 0.2, overwrite: "auto" });
     };
     const over = (e: PointerEvent) => {
-      const active = (e.target as Element).closest("a, button, [role='button'], summary");
-      gsap.to(ring.current, { scale: active ? 1.9 : 1, duration: 0.45, ease: ease.soft });
-      gsap.to(dot.current, { scale: active ? 0 : 1, duration: 0.3, ease: ease.soft });
+      // Text fields keep the native caret.
+      hidden = !!(e.target as Element).closest(
+        "input:not([type='checkbox']):not([type='radio']), textarea, select, [contenteditable='true']",
+      );
+      if (hidden) gsap.to(el, { autoAlpha: 0, duration: 0.15, overwrite: "auto" });
     };
-    const leave = () => gsap.to(both, { autoAlpha: 0, duration: 0.3 });
+    const leave = () => gsap.to(el, { autoAlpha: 0, duration: 0.2 });
 
     window.addEventListener("pointermove", move);
     document.addEventListener("pointerover", over);
@@ -54,15 +52,25 @@ export function Cursor() {
   }, []);
 
   return (
-    <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-[100] mix-blend-difference">
-      <div
-        ref={ring}
-        className="invisible absolute top-0 left-0 -mt-[1.0625rem] -ml-[1.0625rem] size-[2.125rem] rounded-full border border-on-dark opacity-0"
-      />
-      <div
-        ref={dot}
-        className="invisible absolute top-0 left-0 -mt-[0.1875rem] -ml-[0.1875rem] size-1.5 rounded-full bg-on-dark opacity-0"
-      />
+    <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-[100]">
+      {/* The arrow's tip sits exactly on the pointer. */}
+      <div ref={arrow} className="invisible absolute top-0 left-0 opacity-0">
+        <svg width="28" height="30" viewBox="0 0 26 28" className="-mt-px -ml-px">
+          <defs>
+            <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="var(--color-brand-to)" />
+              <stop offset="1" stopColor="var(--color-brand-from)" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M2 2 L22 11.5 L13.2 13.6 L9.4 22.6 Z"
+            fill={`url(#${gradientId})`}
+            stroke="var(--color-on-dark)"
+            strokeWidth="2"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
     </div>
   );
 }

@@ -103,7 +103,7 @@ export default function FaqPage() {
       />
 
       <div className="container-page grid grid-cols-[minmax(0,1fr)] gap-10 py-20 lg:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] lg:gap-16 lg:py-28 xl:gap-24">
-        <aside className="lg:sticky lg:top-28 lg:max-h-[calc(100vh-8rem)] lg:self-start lg:overflow-y-auto lg:pb-4" data-lenis-prevent>
+        <aside className="lg:sticky lg:top-28 lg:self-start">
           <FaqTopicNav categories={categories} />
         </aside>
 
@@ -125,7 +125,7 @@ export default function FaqPage() {
             </div>
           ))}
 
-          <aside aria-label="Contact Atlantis" className="pt-4">
+          <aside id="still-have-a-question" aria-label="Contact Atlantis" className="scroll-mt-28 pt-4">
             <ContactCard title="Still have a question?" />
           </aside>
         </div>

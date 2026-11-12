@@ -50,6 +50,15 @@
     cursor: none !important;
   }
 
+  /* Text fields keep the native caret; the custom cursor hides over them. */
+  .has-cursor :is(input:not([type="checkbox"], [type="radio"]), textarea, [contenteditable="true"]) {
+    cursor: text !important;
+  }
+
+  .has-cursor select {
+    cursor: pointer !important;
+  }
+
   :focus-visible {
     outline: 2px solid var(--color-brand);
     outline-offset: 3px;

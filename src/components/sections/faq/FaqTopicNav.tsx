@@ -11,6 +11,23 @@ export type TopicCategory = { title: string; topics: { id: string; title: string
 export function FaqTopicNav({ categories }: { categories: TopicCategory[] }) {
   const ids = useMemo(() => categories.flatMap((c) => c.topics.map((t) => t.id)), [categories]);
   const [current, setCurrent] = useState(ids[0]);
+  const categoryOf = (id: string) => categories.find((c) => c.topics.some((t) => t.id === id))?.title ?? "";
+  // Open categories. Reaching a topic in another category opens that one and
+  // collapses the rest; the reader can still open or close any by hand.
+  const [openCats, setOpenCats] = useState<ReadonlySet<string>>(() => new Set([categoryOf(ids[0])]));
+  const [lastCategory, setLastCategory] = useState(categoryOf(ids[0]));
+  const currentCategory = categoryOf(current);
+  if (currentCategory !== lastCategory) {
+    setLastCategory(currentCategory);
+    setOpenCats(new Set([currentCategory]));
+  }
+  const toggle = (title: string) =>
+    setOpenCats((prev) => {
+      const next = new Set(prev);
+      if (next.has(title)) next.delete(title);
+      else next.add(title);
+      return next;
+    });
 
   useEffect(() => {
     const sections = ids.map((id) => document.getElementById(id)).filter((el): el is HTMLElement => !!el);
@@ -54,34 +71,66 @@ export function FaqTopicNav({ categories }: { categories: TopicCategory[] }) {
         </select>
       </div>
 
-      {/* Desktop: grouped sidebar. */}
+      {/* Desktop: grouped sidebar. Only the category you're reading is open;
+          the others are collapsed and open with a click. */}
       <nav aria-label="FAQ topics" className="hidden lg:block">
-        {categories.map((c) => (
-          <div key={c.title} className="not-first:mt-7">
-            <p className="font-display text-small font-bold text-subhead">{c.title}</p>
-            <ul className="mt-2 border-l border-line">
-              {c.topics.map((t) => {
-                const on = t.id === current;
-                return (
-                  <li key={t.id}>
-                    <a
-                      href={`#${t.id}`}
-                      aria-current={on ? "location" : undefined}
-                      className={`-ml-px flex items-center justify-between gap-3 border-l-2 py-1.5 pr-2 pl-4 text-body-sm transition-colors duration-300 ${
-                        on
-                          ? "border-brand font-bold text-ink"
-                          : "border-transparent text-ink/70 hover:border-line-strong/40 hover:text-ink"
-                      }`}
-                    >
-                      {t.title}
-                      <span className="text-xs text-ink/50 tabular-nums">{t.count}</span>
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        ))}
+        {categories.map((c) => {
+          const expanded = openCats.has(c.title);
+          const listId = `faq-cat-${c.title.toLowerCase().replace(/[^a-z]+/g, "-")}`;
+          return (
+            <div key={c.title} className="border-b border-line py-3 first:pt-0">
+              <button
+                type="button"
+                aria-expanded={expanded}
+                aria-controls={listId}
+                onClick={() => toggle(c.title)}
+                className="flex w-full cursor-pointer items-center justify-between gap-3 py-1 text-left font-display text-body-sm font-bold text-ink hover:text-brand-strong focus-visible:text-brand-strong"
+              >
+                <span>
+                  {c.title}
+                  <span className="ml-2 text-xs font-medium text-ink/50 tabular-nums">{c.topics.length}</span>
+                </span>
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  aria-hidden="true"
+                  className={`shrink-0 transition-transform duration-300 motion-reduce:transition-none ${expanded ? "rotate-180" : ""}`}
+                >
+                  <path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+              <div
+                id={listId}
+                className={`grid transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+                  expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                }`}
+              >
+                <ul className="overflow-hidden border-l border-line" inert={!expanded}>
+                  {c.topics.map((t) => {
+                    const on = t.id === current;
+                    return (
+                      <li key={t.id} className="first:mt-2">
+                        <a
+                          href={`#${t.id}`}
+                          aria-current={on ? "location" : undefined}
+                          className={`-ml-px flex items-center justify-between gap-3 border-l-2 py-1 pr-2 pl-4 text-body-sm transition-colors duration-300 ${
+                            on
+                              ? "border-brand font-bold text-ink"
+                              : "border-transparent text-ink/70 hover:border-line-strong/40 hover:text-ink"
+                          }`}
+                        >
+                          {t.title}
+                          <span className="text-xs text-ink/50 tabular-nums">{t.count}</span>
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
+          );
+        })}
       </nav>
     </>
   );
