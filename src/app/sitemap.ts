@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
 import { allPosts, postPath } from "@/content/posts";
+import { productPath, products } from "@/content/products";
 import { type Page, pages } from "@/lib/pages";
 import { site } from "@/lib/site";
 
-// Every page in the approved sitemap (src/lib/pages.ts), plus each guide.
+// Every page in the approved sitemap (src/lib/pages.ts), plus each phone and guide.
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...(pages as readonly Page[]).map((page) => ({
@@ -11,6 +12,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: page.path === "/" ? 1 : page.parent ? 0.6 : 0.8,
+    })),
+    ...products.map((product) => ({
+      url: `${site.url}${productPath(product)}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
     })),
     ...allPosts.map((post) => ({
       url: `${site.url}${postPath(post)}`,

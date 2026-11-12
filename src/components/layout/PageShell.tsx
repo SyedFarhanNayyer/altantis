@@ -12,13 +12,16 @@ import { SiteHeader } from "./SiteHeader";
 export function PageShell({
   children,
   schema,
+  solidHeader = false,
 }: {
   children: ReactNode;
   schema?: Record<string, unknown>[];
+  /** Show the header's dark bar from the top, for pages that open on a light section. */
+  solidHeader?: boolean;
 }) {
   return (
     <>
-      <SiteHeader />
+      <SiteHeader solid={solidHeader} />
       <main id="main">{children}</main>
       <SiteFooter />
       {schema && <JsonLd data={{ "@context": "https://schema.org", "@graph": schema }} />}

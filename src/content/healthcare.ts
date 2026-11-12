@@ -1,4 +1,5 @@
 import type { Faq } from "./faq";
+import { pickFaqs } from "./faq-pick";
 
 // Copy for the Healthcare page. Plan availability matches src/content/plans.ts.
 // The HIPAA wording makes no compliance claim: have Atlantis review it, and
@@ -75,7 +76,7 @@ export const healthcareServices: { title: string; body: string; href: string }[]
     href: "/pots-line-replacement",
   },
   {
-    title: "Yealink Phones",
+    title: "Business Phones",
     body: "Desk and cordless phones for the front desk, exam rooms and back office.",
     href: "/products",
   },
@@ -123,6 +124,15 @@ export const healthcareFaqs: Faq[] = [
   {
     question: "Do we need new phones?",
     answer: "Not always. We’ll check whether your current phones work with our system.",
-    link: { href: "/products", label: "See Yealink phones" },
+    link: { href: "/products", label: "See our phones" },
   },
 ];
+
+// The five shown on the page; the FAQ page lists them all.
+export const healthcarePageFaqs = pickFaqs(healthcareFaqs, [
+  "Is your phone system HIPAA compliant?",
+  "Which plan is right for a practice?",
+  "What happens to calls after hours?",
+  "Can we keep our current phone numbers?",
+  "Can we still send and receive faxes?",
+]);

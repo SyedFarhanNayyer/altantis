@@ -10,7 +10,7 @@ import { PracticeTypes } from "@/components/sections/healthcare/PracticeTypes";
 import { PageHero } from "@/components/sections/PageHero";
 import { PlanRows } from "@/components/sections/PlanRows";
 import { faqText } from "@/content/faq";
-import { healthcareFaqs } from "@/content/healthcare";
+import { healthcarePageFaqs } from "@/content/healthcare";
 import { absoluteUrl, webPageSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
 
@@ -42,7 +42,7 @@ export default function HealthcarePage() {
         },
         {
           "@type": "FAQPage",
-          mainEntity: healthcareFaqs.map((f) => ({
+          mainEntity: healthcarePageFaqs.map((f) => ({
             "@type": "Question",
             name: f.question,
             acceptedAnswer: { "@type": "Answer", text: faqText(f) },
@@ -84,7 +84,7 @@ export default function HealthcarePage() {
             Healthcare phone <span className="font-bold">questions.</span>
           </>
         }
-        items={healthcareFaqs}
+        items={healthcarePageFaqs}
       />
       <ClosingCta />
     </PageShell>

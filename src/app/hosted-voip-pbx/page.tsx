@@ -5,9 +5,12 @@ import { FaqSplit } from "@/components/sections/FaqSplit";
 import { PbxComparison } from "@/components/sections/hosted-pbx/PbxComparison";
 import { PbxHero } from "@/components/sections/hosted-pbx/PbxHero";
 import { PbxOverview } from "@/components/sections/hosted-pbx/PbxOverview";
+import { PbxPath } from "@/components/sections/hosted-pbx/PbxPath";
+import { PbxReasons } from "@/components/sections/hosted-pbx/PbxReasons";
+import { PbxSwitch } from "@/components/sections/hosted-pbx/PbxSwitch";
 import { PlanRows } from "@/components/sections/PlanRows";
 import { faqText } from "@/content/faq";
-import { pbxFaqs, startingPrice } from "@/content/hosted-pbx";
+import { pbxPageFaqs, startingPrice } from "@/content/hosted-pbx";
 import { absoluteUrl, webPageSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
 
@@ -38,7 +41,7 @@ export default function HostedPbxPage() {
         },
         {
           "@type": "FAQPage",
-          mainEntity: pbxFaqs.map((f) => ({
+          mainEntity: pbxPageFaqs.map((f) => ({
             "@type": "Question",
             name: f.question,
             acceptedAnswer: { "@type": "Answer", text: faqText(f) },
@@ -48,7 +51,10 @@ export default function HostedPbxPage() {
     >
       <PbxHero />
       <PbxOverview />
+      <PbxPath />
+      <PbxReasons />
       <PbxComparison />
+      <PbxSwitch />
       <PlanRows
         id="pbx-plans-title"
         title={
@@ -67,9 +73,9 @@ export default function HostedPbxPage() {
             Hosted PBX <span className="font-bold">questions.</span>
           </>
         }
-        items={pbxFaqs}
+        items={pbxPageFaqs}
       />
-      <ClosingCta />
+      <ClosingCta image="/images/hosted-pbx-agent-on-headset-call-wide.jpg" imagePosition="object-[72%_40%]" />
     </PageShell>
   );
 }

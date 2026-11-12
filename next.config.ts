@@ -11,6 +11,12 @@ const nextConfig: NextConfig = {
     formats: ["image/webp"],
   },
   partialPrefetching: true,
+  // Old product URLs, kept working after the catalog moved to one page per phone.
+  async redirects() {
+    return [
+      { source: "/products/yealink-cordless", destination: "/products/yealink-w73p", permanent: true },
+    ];
+  },
   turbopack: {
     rules: {
       "*.css": {

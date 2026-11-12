@@ -57,8 +57,11 @@
   --text-tagline: clamp(2.25rem, 1.75rem + 2vw, 3.125rem); /* 50px — hero tagline */
   --text-tagline--line-height: 1.15;
   --text-tagline--letter-spacing: -0.02em;
-  --text-hero-title: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem); /* 24px — homepage hero h2 under the h1 tagline */
+  --text-hero-title: clamp(1.125rem, 1rem + 0.5vw, 1.3125rem); /* 21px — homepage hero h2 under the h1 tagline */
   --text-hero-title--line-height: 1.3;
+  --text-number: clamp(1.75rem, 1rem + 3.2vw, 3.5rem); /* 56px — the phone number on the Number Porting card */
+  --text-number--line-height: 1;
+  --text-number--letter-spacing: -0.04em;
   --text-route-title: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem); /* 28px — call-routing outcomes, feature categories */
   --text-route-title--line-height: 1.25;
   --text-route-title--letter-spacing: -0.02em;
@@ -106,4 +109,25 @@
     var(--color-brand-strong),
     var(--color-brand-to)
   );
+}
+
+/* Soft sand panel with warm brand and amber glows in opposite corners.
+   Used by the Business SMS flow panel and the light process bands. */
+@utility bg-soft-glow {
+  background-color: var(--color-sand);
+  background-image:
+    radial-gradient(circle at 88% 80%, color-mix(in oklab, var(--color-brand) 16%, transparent), transparent 55%),
+    radial-gradient(circle at 10% 10%, color-mix(in oklab, var(--color-amber) 14%, transparent), transparent 45%);
+}
+
+/* Brand gradient painted through text, lighter amber on the left deepening to
+   brand orange on the right (#f3a600 → #df3400). Put it on an inline span so
+   each line, including lines split for the intro, carries the full gradient. */
+@utility text-gradient-brand {
+  background-image: linear-gradient(to right, var(--color-brand-to), var(--color-brand-from));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }

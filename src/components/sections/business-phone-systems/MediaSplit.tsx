@@ -16,6 +16,8 @@ type Props = {
   secondary?: Action;
   image: { src: string; alt: string };
   imageSide: "left" | "right";
+  /** Sizes the frame to the photo's own shape (width / height) so nothing is cropped. */
+  aspect?: number;
   /** Shows a play button over the photo. Visual only until a video is supplied. */
   play?: boolean;
   className?: string;
@@ -34,13 +36,14 @@ export function MediaSplit({
   image,
   imageSide,
   play = false,
+  aspect,
   className = "",
 }: Props) {
   const imageLeft = imageSide === "left";
   return (
     <section aria-labelledby={id} className={className}>
       <div
-        className={`container-page grid items-center gap-12 lg:gap-16 ${
+        className={`container-page grid grid-cols-[minmax(0,1fr)] items-center gap-12 lg:gap-16 ${
           imageLeft
             ? "lg:grid-cols-[minmax(0,37.25fr)_minmax(0,36.6875fr)]"
             : "lg:grid-cols-[minmax(0,36.6875fr)_minmax(0,37.25fr)]"
@@ -68,11 +71,11 @@ export function MediaSplit({
             ))}
           </ul>
           <div data-reveal="fade" className="mt-7 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-            <ButtonLink href={primary.href} className="w-full sm:w-auto sm:px-9">
+            <ButtonLink href={primary.href} className="w-full max-sm:h-auto max-sm:min-h-15 max-sm:py-3 max-sm:text-center max-sm:whitespace-normal sm:w-auto sm:px-9">
               {primary.label}
             </ButtonLink>
             {secondary && (
-              <ButtonLink href={secondary.href} variant="outline-brand" className="w-full sm:w-auto sm:px-8">
+              <ButtonLink href={secondary.href} variant="outline-brand" className="w-full max-sm:h-auto max-sm:min-h-15 max-sm:py-3 max-sm:text-center max-sm:whitespace-normal sm:w-auto sm:px-8">
                 {secondary.label}
               </ButtonLink>
             )}
@@ -82,9 +85,11 @@ export function MediaSplit({
         <div
           data-reveal="wipe"
           {...(imageLeft ? {} : { "data-wipe-from": "right" })}
-          className={`relative aspect-[596/466] overflow-hidden rounded-[0.625rem] md:aspect-video lg:aspect-[596/466] ${
-            imageLeft ? "lg:order-1" : ""
-          }`}
+          {...(aspect ? { "data-wipe-full": "" } : {})}
+          className={`relative overflow-hidden rounded-[0.625rem] ${
+            aspect ? "" : "aspect-[596/466] md:aspect-video lg:aspect-[596/466]"
+          } ${imageLeft ? "lg:order-1" : ""}`}
+          style={aspect ? { aspectRatio: aspect } : undefined}
         >
           <Image src={image.src} alt={image.alt} fill unoptimized className="object-cover" />
           {play && (

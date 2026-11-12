@@ -1,4 +1,4 @@
-import type { NavGroup, NavLink } from "./pages";
+import type { NavGroup, NavLink, NavPlainLink, PagePath } from "./pages";
 
 export const site = {
   name: "Atlantis",
@@ -10,15 +10,16 @@ export const site = {
   region: "United States",
 };
 
-// Header mega menus, from the approved sitemap. Labels come from
-// src/lib/pages.ts. Images are existing site photos standing in until
-// menu-specific ones are supplied.
-export const mainNav: NavGroup[] = [
+// Header mega menus, from the approved sitemap, plus plain links with no menu.
+// Labels come from src/lib/pages.ts. Every menu image is the placeholder for
+// now: give a group's `image.src`, or a page's entry in `menuPreviews`, its real
+// photo when it's ready.
+export const mainNav: (NavGroup | NavPlainLink)[] = [
   {
     label: "Phone Systems",
     heading: "Business Phone Systems",
     description: "Cloud and on-site phone systems, planned around how your business takes calls.",
-    image: { src: "/images/bps-employee-answering-business-call.jpg", alt: "Office employee answering a business call at her desk" },
+    image: { src: "/images/placeholder-photo.svg", alt: "" },
     links: [
       { path: "/business-phone-systems" },
       { path: "/business-voip" },
@@ -27,12 +28,13 @@ export const mainNav: NavGroup[] = [
       { path: "/sip-trunking" },
       { path: "/pots-line-replacement" },
       { path: "/number-porting" },
+      { path: "/pricing" },
     ],
   },
   {
     label: "Features & AI",
     description: "Texting, integrations and AI agents that answer, book and follow up for you.",
-    image: { src: "/images/guide-missed-business-calls.png", alt: "Business phone call answered by an AI receptionist" },
+    image: { src: "/images/placeholder-photo.svg", alt: "" },
     links: [
       { path: "/features" },
       { path: "/business-sms" },
@@ -44,63 +46,11 @@ export const mainNav: NavGroup[] = [
       { path: "/ai-voice-agents/scheduling-agent" },
     ],
   },
-  {
-    label: "Products",
-    description: "Yealink desk and cordless phones, and plans priced per user.",
-    image: { src: "/images/guide-phone-system-signs.jpg", alt: "Business desk phone" },
-    links: [
-      { path: "/products" },
-      { path: "/products/yealink-t54w" },
-      { path: "/products/yealink-t53w" },
-      { path: "/products/yealink-cordless" },
-      { path: "/pricing" },
-    ],
-  },
-  {
-    label: "Industries",
-    columns: 2,
-    description: "Phone systems set up for the way your industry works.",
-    image: { src: "/images/hero-team-reviewing-tablet.jpg", alt: "Office team reviewing calls together" },
-    links: [
-      { path: "/industries" },
-      { path: "/industries/healthcare", image: "/images/business-owner-phone-call.jpg" },
-      { path: "/industries/professional-services", image: "/images/business-team-coworking.png" },
-      { path: "/industries/real-estate", image: "/images/copper-line-team-meeting.jpg" },
-      { path: "/industries/construction", image: "/images/atlantis-team-reviewing-screen.png" },
-      { path: "/industries/manufacturing-warehousing", image: "/images/hero-business-owner-tablet.jpg" },
-      { path: "/industries/hospitality", image: "/images/hero-owner-with-coffee.jpg" },
-      { path: "/industries/retail", image: "/images/guide-phone-system-signs.jpg" },
-      { path: "/industries/government", image: "/images/guide-missed-business-calls.png" },
-      { path: "/industries/education", image: "/images/hero-team-reviewing-tablet.jpg" },
-      { path: "/industries/call-centers", image: "/images/business-owner-phone-call.jpg" },
-      { path: "/industries/restaurants", image: "/images/business-team-coworking.png" },
-      { path: "/industries/non-profit", image: "/images/copper-line-team-meeting.jpg" },
-      { path: "/industries/ad-agencies", image: "/images/atlantis-team-reviewing-screen.png" },
-      { path: "/industries/franchises", image: "/images/hero-business-owner-tablet.jpg" },
-      { path: "/industries/auto-shops", image: "/images/hero-owner-with-coffee.jpg" },
-      { path: "/industries/tech-companies", image: "/images/guide-phone-system-signs.jpg" },
-      { path: "/industries/startups", image: "/images/guide-missed-business-calls.png" },
-      { path: "/industries/financial-services", image: "/images/hero-team-reviewing-tablet.jpg" },
-      { path: "/industries/churches", image: "/images/business-owner-phone-call.jpg" },
-    ],
-  },
-  {
-    label: "IT Services",
-    description: "Managed IT, networks, cabling and security from the same Atlantis team.",
-    image: { src: "/images/business-team-coworking.png", alt: "Team working in a connected office" },
-    links: [
-      { path: "/it-services" },
-      { path: "/it-services/managed-it-services" },
-      { path: "/it-services/network-security" },
-      { path: "/network-cabling" },
-      { path: "/security-systems" },
-      { path: "/it-services/custom-software-development" },
-    ],
-  },
+  { label: "Products", path: "/products" },
   {
     label: "Company",
     description: "A business telecom team since 1984.",
-    image: { src: "/images/atlantis-team-reviewing-screen.png", alt: "Atlantis team reviewing a project on screen" },
+    image: { src: "/images/placeholder-photo.svg", alt: "" },
     links: [
       { path: "/about-us" },
       { path: "/reviews" },
@@ -110,6 +60,78 @@ export const mainNav: NavGroup[] = [
     ],
   },
 ];
+
+// Hidden from the header for now. To show them again, move each group back
+// into `mainNav` (Industries after Products, then IT Services).
+export const hiddenNav: NavGroup[] = [
+  {
+    label: "Industries",
+    columns: 2,
+    description: "Phone systems set up for the way your industry works.",
+    image: { src: "/images/placeholder-photo.svg", alt: "" },
+    links: [
+      { path: "/industries" },
+      { path: "/industries/healthcare", image: "/images/placeholder-photo.svg" },
+      { path: "/industries/professional-services", image: "/images/placeholder-photo.svg" },
+      { path: "/industries/real-estate", image: "/images/placeholder-photo.svg" },
+      { path: "/industries/construction", image: "/images/placeholder-photo.svg" },
+      { path: "/industries/manufacturing-warehousing", image: "/images/placeholder-photo.svg" },
+      { path: "/industries/hospitality", image: "/images/placeholder-photo.svg" },
+      { path: "/industries/retail", image: "/images/placeholder-photo.svg" },
+      { path: "/industries/government", image: "/images/placeholder-photo.svg" },
+      { path: "/industries/education", image: "/images/placeholder-photo.svg" },
+      { path: "/industries/call-centers", image: "/images/placeholder-photo.svg" },
+      { path: "/industries/restaurants", image: "/images/placeholder-photo.svg" },
+      { path: "/industries/non-profit", image: "/images/placeholder-photo.svg" },
+      { path: "/industries/ad-agencies", image: "/images/placeholder-photo.svg" },
+      { path: "/industries/franchises", image: "/images/placeholder-photo.svg" },
+      { path: "/industries/auto-shops", image: "/images/placeholder-photo.svg" },
+      { path: "/industries/tech-companies", image: "/images/placeholder-photo.svg" },
+      { path: "/industries/startups", image: "/images/placeholder-photo.svg" },
+      { path: "/industries/financial-services", image: "/images/placeholder-photo.svg" },
+      { path: "/industries/churches", image: "/images/placeholder-photo.svg" },
+    ],
+  },
+  {
+    label: "IT Services",
+    description: "Managed IT, networks, cabling and security from the same Atlantis team.",
+    image: { src: "/images/placeholder-photo.svg", alt: "" },
+    links: [
+      { path: "/it-services" },
+      { path: "/it-services/managed-it-services" },
+      { path: "/it-services/network-security" },
+      { path: "/network-cabling" },
+      { path: "/security-systems" },
+      { path: "/it-services/custom-software-development" },
+    ],
+  },
+];
+
+// What the mega menu card shows while a link is hovered or focused: a line
+// about the page and its photo (placeholder until real photos are supplied).
+export const menuPreviews: Partial<Record<PagePath, { description: string; image: string }>> = {
+  "/business-phone-systems": { description: "Phone systems planned around how your business takes calls.", image: "/images/placeholder-photo.svg" },
+  "/business-voip": { description: "Business calling over your internet, on desk phones, cell phones and laptops.", image: "/images/placeholder-photo.svg" },
+  "/hosted-voip-pbx": { description: "A complete phone system in the cloud, with no PBX box in your office.", image: "/images/placeholder-photo.svg" },
+  "/ucaas": { description: "Calls, video, chat and texting from one provider, under one business identity.", image: "/images/placeholder-photo.svg" },
+  "/sip-trunking": { description: "Connect the phone system you already own to the internet and keep your setup.", image: "/images/placeholder-photo.svg" },
+  "/pots-line-replacement": { description: "Move off retiring copper lines and keep alarms, fax and elevator phones working.", image: "/images/placeholder-photo.svg" },
+  "/number-porting": { description: "Switch phone systems and keep every business number you already have.", image: "/images/placeholder-photo.svg" },
+  "/pricing": { description: "Plans per user, per month, with everything each one includes.", image: "/images/placeholder-photo.svg" },
+  "/features": { description: "Every calling, routing, texting and AI feature, with the plan it comes on.", image: "/images/placeholder-photo.svg" },
+  "/contact-us": { description: "Talk to our team about your phones, numbers and the plan that fits.", image: "/images/placeholder-photo.svg" },
+  "/business-sms": { description: "Text customers from your business number, with photos and files.", image: "/images/placeholder-photo.svg" },
+  "/integrations": { description: "Connect your phone system to your CRM, Microsoft Teams and email.", image: "/images/placeholder-photo.svg" },
+  "/ai-voice-agents": { description: "AI agents that answer calls, help callers and pass them to your team.", image: "/images/placeholder-photo.svg" },
+  "/ai-voice-agents/ai-receptionist": { description: "Greets every caller and sends them to the right person or team.", image: "/images/placeholder-photo.svg" },
+  "/ai-voice-agents/support-agent": { description: "Answers common questions and writes up support tickets from calls.", image: "/images/placeholder-photo.svg" },
+  "/ai-voice-agents/sales-agent": { description: "Picks up new-customer calls and passes ready buyers to your sales team.", image: "/images/placeholder-photo.svg" },
+  "/ai-voice-agents/scheduling-agent": { description: "Books, moves and cancels appointments by phone.", image: "/images/placeholder-photo.svg" },
+  "/about-us": { description: "A business telecom team since 1984, based in Ventura, California.", image: "/images/placeholder-photo.svg" },
+  "/reviews": { description: "What businesses say about working with Atlantis.", image: "/images/placeholder-photo.svg" },
+  "/faq": { description: "Straight answers about pricing, switching, equipment and support.", image: "/images/placeholder-photo.svg" },
+  "/blog": { description: "Guides on phone systems, copper retirement and missed calls.", image: "/images/placeholder-photo.svg" },
+};
 
 // Shown in their own column in every mega menu. A group that also lists one
 // of these leaves it out of its main column.

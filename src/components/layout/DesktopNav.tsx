@@ -5,12 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import { lift } from "@/components/ui/ButtonLink";
-import { navLabel, type NavLink } from "@/lib/pages";
-import { mainNav, menuQuickHeading, menuQuickLinks } from "@/lib/site";
+import { isNavGroup, navLabel, type NavLink } from "@/lib/pages";
+import { mainNav, menuPreviews, menuQuickHeading, menuQuickLinks } from "@/lib/site";
 
 // Mega menu: a photo card linking to the group's overview page, the group's
 // pages, then a column of the pages people look for from anywhere (pricing,
-// features, contact). Links with their own image swap the photo while hovered or focused. Each panel is a disclosure: a click toggles
+// features, contact). Hovering or focusing a link turns the card into that
+// page's preview: its photo, title, description and a link to it. Each panel is a disclosure: a click toggles
 // a group, hovering with a mouse opens it, and Escape, an outside click or
 // moving focus away closes it.
 // Each panel spans the header (the nearest positioned ancestor), so the list
@@ -19,7 +20,8 @@ import { mainNav, menuQuickHeading, menuQuickLinks } from "@/lib/site";
 export function DesktopNav() {
   const [open, setOpen] = useState<number | null>(null);
   const [seen, setSeen] = useState<ReadonlySet<number>>(new Set());
-  const [preview, setPreview] = useState<string | null>(null);
+  // The link being previewed in the card.
+  const [preview, setPreview] = useState<NavLink | null>(null);
   const navRef = useRef<HTMLElement>(null);
   const closeTimer = useRef<number>(undefined);
   const baseId = useId();
@@ -86,8 +88,8 @@ export function DesktopNav() {
       <Link
         href={link.path}
         aria-current={pathname === link.path ? "page" : undefined}
-        onPointerEnter={link.image ? () => setPreview(link.image!) : undefined}
-        onFocus={link.image ? () => setPreview(link.image!) : undefined}
+        onPointerEnter={() => setPreview(link)}
+        onFocus={() => setPreview(link)}
         className={linkClass}
       >
         {navLabel(link)}
@@ -99,6 +101,18 @@ export function DesktopNav() {
     <nav ref={navRef} aria-label="Main" className="ml-auto hidden xl:block">
       <ul className="flex items-center gap-1 font-body text-label font-medium tracking-normal text-on-dark">
         {mainNav.map((group, i) => {
+          if (!isNavGroup(group))
+            return (
+              <li key={group.label} data-intro>
+                <Link
+                  href={group.path}
+                  aria-current={pathname === group.path ? "page" : undefined}
+                  className={`flex items-center rounded-full px-2.5 py-2 whitespace-nowrap hover:text-amber focus-visible:text-amber aria-[current=page]:text-amber ${lift}`}
+                >
+                  {group.label}
+                </Link>
+              </li>
+            );
           const isOpen = open === i;
           const panelId = `${baseId}-${i}`;
           const [overview, ...rest] = group.links;
@@ -109,8 +123,25 @@ export function DesktopNav() {
             links.slice(c * perColumn, (c + 1) * perColumn),
           );
           // Every photo the card can show, stacked so a hover crossfades.
-          const photos = [...new Set([group.image.src, ...links.flatMap((l) => l.image ?? [])])];
-          const shown = (isOpen && preview) || group.image.src;
+          const imageOf = (l: NavLink) => l.image ?? menuPreviews[l.path]?.image ?? group.image.src;
+          const photos = [...new Set([group.image.src, ...group.links.map(imageOf), ...menuQuickLinks.map(imageOf)])];
+          const active = isOpen ? preview : null;
+          const card = active
+            ? {
+                href: active.path,
+                title: navLabel(active),
+                body: menuPreviews[active.path]?.description ?? group.description,
+                cta: `View ${navLabel(active)}`,
+                image: imageOf(active),
+              }
+            : {
+                href: overview.path,
+                title: group.label,
+                body: group.description,
+                cta: overview.path === "/about-us" ? "About Atlantis" : `View ${navLabel(overview)}`,
+                image: group.image.src,
+              };
+          const shown = card.image;
           return (
             <li
               key={group.label}
@@ -150,8 +181,8 @@ export function DesktopNav() {
               >
                 <div className={`container-page grid gap-10 py-10 ${count === 2 ? "grid-cols-4" : "grid-cols-3"}`}>
                   <Link
-                    href={overview.path}
-                    aria-current={pathname === overview.path ? "page" : undefined}
+                    href={card.href}
+                    aria-current={pathname === card.href ? "page" : undefined}
                     className="group/card relative isolate flex min-h-72 flex-col justify-end overflow-hidden rounded-lg p-6 text-on-dark"
                   >
                     {/* Loaded on first open, so closed menus cost no downloads. */}
@@ -173,10 +204,13 @@ export function DesktopNav() {
                       aria-hidden="true"
                       className="absolute inset-0 -z-10 bg-gradient-to-t from-night via-night/60 to-night/10"
                     />
-                    <span className="font-display text-title-lg font-bold">{group.label}</span>
-                    <span className="mt-2 text-body-sm text-on-dark/85">{group.description}</span>
+                    {/* Re-keyed per preview so the text eases in each time it changes. */}
+                    <span key={card.href} className="flex flex-col motion-safe:animate-[sms-in_0.4s_cubic-bezier(0.22,1,0.36,1)_both]">
+                      <span className="font-display text-title-lg font-bold">{card.title}</span>
+                      <span className="mt-2 text-body-sm text-on-dark/85">{card.body}</span>
+                    </span>
                     <span className="mt-4 inline-flex items-center gap-2 font-display text-label font-bold text-amber">
-                      {overview.path === "/about-us" ? "About Atlantis" : `View ${navLabel(overview)}`}
+                      {card.cta}
                       <svg
                         width="14"
                         height="14"

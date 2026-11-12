@@ -31,10 +31,8 @@ export const pages = [
   { path: "/ai-voice-agents/scheduling-agent", title: "AI Scheduling Agent", parent: "/ai-voice-agents" },
 
   // Products and pricing
-  { path: "/products", title: "Yealink Phone Catalog", label: "Yealink Phones" },
-  { path: "/products/yealink-t54w", title: "Yealink T54W", parent: "/products" },
-  { path: "/products/yealink-t53w", title: "Yealink T53W", parent: "/products" },
-  { path: "/products/yealink-cordless", title: "Yealink Cordless Phone", parent: "/products" },
+  // Each phone's own page comes from src/content/products.ts.
+  { path: "/products", title: "Products" },
   { path: "/pricing", title: "Pricing" },
 
   // Industries
@@ -100,6 +98,11 @@ export type NavGroup = {
   columns?: 1 | 2;
   links: NavLink[];
 };
+
+// A top-level header link with no menu.
+export type NavPlainLink = { label: string; path: PagePath };
+
+export const isNavGroup = (entry: NavGroup | NavPlainLink): entry is NavGroup => "links" in entry;
 
 export const navLabel = (link: NavLink) => {
   const page = getPage(link.path)!;

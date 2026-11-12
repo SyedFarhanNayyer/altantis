@@ -38,7 +38,7 @@ export default function PricingPage() {
       <Faq />
       <ClosingCta
         eyebrow="Simple Setup. Plug and Play."
-        image="/images/support-agent-headset-call.jpg"
+        image="/images/placeholder-photo.svg"
         imagePosition="object-[center_20%]"
         title={
           <>

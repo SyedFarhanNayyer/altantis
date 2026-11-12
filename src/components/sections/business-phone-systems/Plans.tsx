@@ -5,8 +5,8 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { plans } from "@/content/plans";
 
 // One ruled rate sheet rather than separate cards, so prices and lists can be
-// read straight across. Each plan is a subgrid: header, features and add-ons
-// line up from column to column. Pro is the dark column, as it is in the table.
+// read straight across. Each plan is a subgrid: header, features, add-ons and
+// the plan's button line up from column to column. Pro is the dark column, as it is in the table.
 //
 // `standalone` is for a page whose hero already introduces the plans: the
 // visible heading goes (a hidden one keeps the outline in order) and the
@@ -46,7 +46,7 @@ export function Plans({ standalone = false }: { standalone?: boolean }) {
             return (
               <article
                 key={plan.name}
-                className={`row-span-3 grid grid-rows-subgrid gap-y-0 ${dark ? "bg-night text-on-dark" : "bg-card text-ink"}`}
+                className={`row-span-4 grid grid-rows-subgrid gap-y-0 ${dark ? "bg-night text-on-dark" : "bg-card text-ink"}`}
               >
                 <div className="flex flex-col p-6 xl:p-7">
                   <div className="flex min-h-7 items-center justify-between gap-3">
@@ -64,16 +64,9 @@ export function Plans({ standalone = false }: { standalone?: boolean }) {
                     <span className={`text-small ${dark ? "text-on-dark/85" : ""}`}>{plan.unit}</span>
                   </p>
 
-                  <ButtonLink
-                    href="/contact-us"
-                    variant={dark ? "primary" : "outline-brand"}
-                    className="mt-6 w-full lg:px-2"
-                  >
-                    {plan.cta}
-                  </ButtonLink>
                   <a
                     href="#compare"
-                    className={`mt-3 inline-flex min-h-6 items-center justify-center gap-1.5 self-center text-small font-medium underline-offset-4 hover:underline ${dark ? "text-amber" : "text-brand-strong"}`}
+                    className={`mt-4 inline-flex min-h-6 items-center gap-1.5 self-start text-small font-medium underline-offset-4 hover:underline ${dark ? "text-amber" : "text-brand-strong"}`}
                   >
                     See all features
                     <CaretDown size={14} weight="bold" aria-hidden="true" />
@@ -110,6 +103,13 @@ export function Plans({ standalone = false }: { standalone?: boolean }) {
                       </li>
                     ))}
                   </ul>
+                </div>
+
+                {/* The plan's button closes the column, so all four line up at the end of the table. */}
+                <div className="px-6 pb-6 xl:px-7">
+                  <ButtonLink href="/contact-us" className="w-full lg:px-2">
+                    {plan.cta}
+                  </ButtonLink>
                 </div>
               </article>
             );

@@ -21,7 +21,7 @@ export default function Home() {
         <Features />
         <About />
         <Reviews />
-        <ClosingCta />
+        <ClosingCta image="/images/business-team-coworking.png" />
         <Guides />
       </main>
       <SiteFooter />

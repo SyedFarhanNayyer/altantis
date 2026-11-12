@@ -1,20 +1,19 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { ClosingCta } from "@/components/sections/ClosingCta";
 import { FaqSplit } from "@/components/sections/FaqSplit";
 import { PageHero } from "@/components/sections/PageHero";
-import { OfficeFloorPlan } from "@/components/sections/products/OfficeFloorPlan";
-import { PhoneList } from "@/components/sections/products/PhoneList";
+import { ProductGrid } from "@/components/sections/products/ProductGrid";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { catalogFaqs, catalogPhones, catalogRows } from "@/content/catalog";
+import { catalogFaqs } from "@/content/catalog";
 import { faqText } from "@/content/faq";
+import { productName, productPath, products } from "@/content/products";
 import { absoluteUrl, webPageSchema } from "@/lib/schema";
 
 const path = "/products";
-const title = "Yealink Phone Catalog: Desk and Cordless Phones | Atlantis";
+const title = "Business Phones: Grandstream and Yealink | Atlantis";
 const description =
-  "Find the right Yealink phone for each part of your office, from the front desk to the warehouse floor. Compare the T54W, T53W and W73P cordless system.";
+  "Grandstream and Yealink desk and cordless phones, configured to your specifications and shipped ready to plug in. Compare features and specs for each phone.";
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -31,11 +30,11 @@ export default function ProductsPage() {
         webPageSchema("CollectionPage", path, title, description),
         {
           "@type": "ItemList",
-          itemListElement: catalogPhones.map((phone, i) => ({
+          itemListElement: products.map((p, i) => ({
             "@type": "ListItem",
             position: i + 1,
-            name: `Yealink ${phone.name}`,
-            url: absoluteUrl(phone.href),
+            name: productName(p),
+            url: absoluteUrl(productPath(p)),
           })),
         },
         {
@@ -51,76 +50,31 @@ export default function ProductsPage() {
       <PageHero
         title={
           <>
-            Yealink Phones,{" "}
+            Business Phones,{" "}
             <br className="max-sm:hidden" />
-            <span className="font-bold">Chosen for Where Your Team Works</span>
+            <span className="font-bold">Configured and Ready to Plug In</span>
           </>
         }
-        body="The right phone depends on who’s using it and where they work. Start with a room in your office and see which phone suits it."
+        body="Desk and cordless phones from Grandstream and Yealink. We set up each one for your business and ship it ready to use."
         primary={{ label: "Ask Which Phone Fits", href: "/contact-us" }}
-        secondary={{ label: "Compare Phones", href: "#compare-phones" }}
+        secondary={{ label: "See Plans and Pricing", href: "/pricing" }}
       />
 
-      <section aria-labelledby="floor-plan-title" className="py-20 lg:py-28">
+      <section id="all-phones" aria-labelledby="all-phones-title" className="scroll-mt-24 py-20 lg:py-28">
         <div className="container-page">
-          <SectionHeading id="floor-plan-title" eyebrow="Your Office">
-            Pick a room,{" "}
-            <span className="font-bold">find the phone.</span>
-          </SectionHeading>
-          <div className="mt-10 lg:mt-14">
-            <OfficeFloorPlan />
+          <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <SectionHeading id="all-phones-title" eyebrow="All Phones">
+              Find the right phone <span className="font-bold">for your team.</span>
+            </SectionHeading>
+            <p data-reveal="fade" className="text-body-sm text-ink/80">
+              {products.length} phones
+            </p>
+          </div>
+          <div className="mt-10 lg:mt-12">
+            <ProductGrid products={products} headingLevel="h3" />
           </div>
         </div>
       </section>
-
-      <section id="compare-phones" aria-labelledby="compare-phones-title" className="scroll-mt-24 bg-sand py-20 lg:py-28">
-        <div className="container-page">
-          <SectionHeading id="compare-phones-title" eyebrow="Side by Side">
-            Three phones, <span className="font-bold">compared.</span>
-          </SectionHeading>
-          <div
-            role="region"
-            aria-labelledby="compare-phones-title"
-            tabIndex={0}
-            className="relative mt-10 overflow-x-auto lg:mt-12"
-          >
-            <table className="w-full min-w-[46rem] table-fixed border-separate border-spacing-0">
-              <caption className="sr-only">Yealink T54W, T53W and W73P compared</caption>
-              <thead>
-                <tr>
-                  <td className="w-[22%] border-b border-line-strong" />
-                  {catalogPhones.map((phone) => (
-                    <th key={phone.name} scope="col" className="border-b border-line-strong px-4 pb-4 text-left">
-                      <Link
-                        href={phone.href}
-                        className="font-display text-title-lg font-bold underline-offset-4 hover:text-brand-strong hover:underline focus-visible:text-brand-strong"
-                      >
-                        {phone.name}
-                      </Link>
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {catalogRows.map((row) => (
-                  <tr key={row.label}>
-                    <th scope="row" className="border-b border-line py-4 pr-4 text-left align-top text-body-sm font-bold">
-                      {row.label}
-                    </th>
-                    {row.values.map((value, i) => (
-                      <td key={catalogPhones[i].name} className="border-b border-line px-4 py-4 align-top text-body-sm">
-                        {value}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <PhoneList />
 
       <FaqSplit
         id="catalog-faq-title"
@@ -131,7 +85,7 @@ export default function ProductsPage() {
         }
         items={catalogFaqs}
       />
-      <ClosingCta />
+      <ClosingCta image={null} />
     </PageShell>
   );
 }

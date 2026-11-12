@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useId, useState } from "react";
 import { lift } from "@/components/ui/ButtonLink";
-import { navLabel } from "@/lib/pages";
+import { isNavGroup, navLabel } from "@/lib/pages";
 import { headerCta, mainNav } from "@/lib/site";
 
 // Same groups as the desktop dropdowns, as an accordion: one group open at
@@ -50,6 +50,18 @@ export function MobileMenu() {
       >
         <ul className="text-on-dark">
           {mainNav.map((g, i) => {
+            if (!isNavGroup(g))
+              return (
+                <li key={g.label} className="border-b border-on-dark/15">
+                  <Link
+                    href={g.path}
+                    onClick={close}
+                    className="flex w-full items-center py-4 font-display text-title-lg hover:text-amber focus-visible:text-amber"
+                  >
+                    {g.label}
+                  </Link>
+                </li>
+              );
             const expanded = group === i;
             const listId = `${panelId}-${i}`;
             return (

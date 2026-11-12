@@ -9,14 +9,16 @@ type Props = {
   items: Faq[];
   /** Drops the top spacing when the section above already leaves room. */
   flushTop?: boolean;
+  /** Label for the contact button (default "Contact Atlantis"). */
+  ctaLabel?: string;
 };
 
 // The FAQ used on every page except /faq. The heading stays in view beside the
 // answers on desktop.
-export function FaqSplit({ id, title, items, flushTop = false }: Props) {
+export function FaqSplit({ id, title, items, flushTop = false, ctaLabel = "Contact Atlantis" }: Props) {
   return (
     <section aria-labelledby={id} className={`pb-20 lg:pb-28 ${flushTop ? "" : "pt-20 lg:pt-28"}`}>
-      <div className="container-page grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-16">
+      <div className="container-page grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-16">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <h2 id={id} data-reveal="lines" className="text-h2">
             {title}
@@ -24,8 +26,8 @@ export function FaqSplit({ id, title, items, flushTop = false }: Props) {
           <p className="mt-3 text-body">
             Can’t find what you’re looking for? Our team can talk it through with you.
           </p>
-          <ButtonLink href="/contact-us" variant="outline-brand" className="mt-6 w-full sm:w-auto sm:px-9">
-            Contact Atlantis
+          <ButtonLink href="/contact-us" variant="outline-brand" className="mt-6 w-full max-sm:h-auto max-sm:min-h-15 max-sm:py-3 max-sm:text-center max-sm:whitespace-normal sm:w-auto sm:px-9">
+            {ctaLabel}
           </ButtonLink>
         </div>
         <FaqAccordion items={items} className="border-t border-line" />

@@ -14,6 +14,7 @@ import {
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { callScenarios, type FlowIcon } from "@/content/hosted-pbx";
 import { CallSimulator } from "./CallSimulator";
+import { HeroGlow } from "@/components/ui/HeroGlow";
 
 const icons: Record<FlowIcon, Icon> = {
   incoming: PhoneIncoming,
@@ -33,7 +34,8 @@ const icons: Record<FlowIcon, Icon> = {
 export function PbxHero() {
   return (
     <section aria-labelledby="hero-title">
-      <div className="bg-night px-[var(--gutter)] pt-36 pb-40 text-center text-on-dark lg:pt-44 lg:pb-48">
+      <div className="relative isolate overflow-hidden bg-night px-[var(--gutter)] pt-36 pb-40 text-center text-on-dark lg:pt-44 lg:pb-48">
+        <HeroGlow />
         <h1 id="hero-title" data-intro="lines" className="mx-auto max-w-[56rem] text-h1">
           Hosted VoIP PBX:{" "}
           <br className="max-sm:hidden" />

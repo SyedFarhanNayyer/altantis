@@ -3,7 +3,6 @@ import { PageShell } from "@/components/layout/PageShell";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { PageHero } from "@/components/sections/PageHero";
 import { webPageSchema } from "@/lib/schema";
-import { business } from "@/lib/site";
 
 const path = "/contact-us";
 const title = "Contact Atlantis | Business Phone Systems";
@@ -17,8 +16,6 @@ export const metadata: Metadata = {
   openGraph: { url: path, title, description },
   twitter: { title, description },
 };
-
-const { address } = business;
 
 export default function ContactPage() {
   return (
@@ -34,7 +31,7 @@ export default function ContactPage() {
         body="Tell us about your business and what you need, or call us during office hours."
       />
 
-      <div className="container-page grid gap-14 py-20 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16 lg:py-28 xl:gap-24">
+      <div className="container-page py-20 lg:py-28">
         <section aria-labelledby="message-title">
           <h2 id="message-title" data-reveal="lines" className="text-h2 text-ink">
             Get in touch with <span className="font-bold">Atlantis Team.</span>
@@ -47,55 +44,6 @@ export default function ContactPage() {
             <ContactForm />
           </div>
         </section>
-
-        <aside aria-labelledby="details-title" className="lg:pt-2">
-          <h2 id="details-title" className="font-display text-title-lg font-bold">
-            Contact details
-          </h2>
-
-          <dl className="mt-6 divide-y divide-line border-y border-line">
-            <div className="py-5">
-              <dt className="text-small text-ink/75">Call</dt>
-              <dd className="mt-1">
-                <a
-                  href={`tel:${business.phone.tel}`}
-                  className="font-display text-title font-bold text-brand-strong underline-offset-4 hover:underline focus-visible:underline"
-                >
-                  {business.phone.display}
-                </a>
-              </dd>
-            </div>
-            <div className="py-5">
-              <dt className="text-small text-ink/75">Email</dt>
-              <dd className="mt-1">
-                <a
-                  href={`mailto:${business.email}`}
-                  className="text-body font-medium break-all underline-offset-4 hover:text-brand-strong hover:underline focus-visible:underline"
-                >
-                  {business.email}
-                </a>
-              </dd>
-            </div>
-            <div className="py-5">
-              <dt className="text-small text-ink/75">Visit</dt>
-              <dd className="mt-1 text-body">
-                <address className="not-italic">
-                  {business.legalName}
-                  <br />
-                  {address.street}
-                  <br />
-                  {address.city}, {address.region} {address.postalCode}
-                </address>
-                <a
-                  href={address.mapUrl}
-                  className="mt-2 inline-block font-display text-label font-bold text-brand-strong underline-offset-4 hover:underline focus-visible:underline"
-                >
-                  Get directions
-                </a>
-              </dd>
-            </div>
-          </dl>
-        </aside>
       </div>
     </PageShell>
   );

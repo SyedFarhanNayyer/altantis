@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { pbxFacts } from "@/content/hosted-pbx";
 
 // The definition as one large statement, for anyone who searched the term, then
@@ -22,6 +23,18 @@ export function PbxOverview() {
               internet. You get the features of a larger phone system without a
               phone closet to look after, and you manage your settings online.
             </p>
+            <p className="mt-4 max-w-[46rem] text-body">
+              A traditional PBX is a box of equipment in your building that you buy, power and pay to maintain. With
+              a hosted PBX, that system lives in a secure data center instead, and your phones connect to it over
+              your internet connection. Add video, chat and messaging on top and it becomes{" "}
+              <Link
+                href="/ucaas"
+                className="font-medium text-brand-strong underline underline-offset-4 hover:no-underline focus-visible:no-underline"
+              >
+                UCaaS (unified communications)
+              </Link>
+              .
+            </p>
           </div>
         </div>
 
@@ -30,12 +43,12 @@ export function PbxOverview() {
           className="relative mt-10 aspect-[4/3] overflow-hidden rounded-[0.625rem] sm:aspect-[21/9] lg:mt-14 lg:aspect-[21/8]"
         >
           <Image
-            src="/images/hosted-pbx-team-headset-calls.jpg"
-            alt="Three team members on headset calls working at desks in an office"
+            src="/images/hosted-pbx-woman-on-headset-call-laptop.jpg"
+            alt="Smiling professional on a headset call at her laptop"
             fill
             unoptimized
             sizes="(min-width: 1280px) 1200px, 100vw"
-            className="object-cover object-[50%_18%]"
+            className="object-cover object-[60%_30%]"
           />
         </div>
 

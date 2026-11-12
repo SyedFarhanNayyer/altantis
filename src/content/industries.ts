@@ -2,8 +2,8 @@
 // some depend on the plan. Every row shares this placeholder photo for now: give a
 // row its own `image` when its real photo is ready.
 export const industryPlaceholderImage = {
-  src: "/images/hero-team-reviewing-tablet.jpg",
-  alt: "Office team reviewing calls together on a tablet",
+  src: "/images/placeholder-photo.svg",
+  alt: "Photo needed for this industry",
 };
 
 export const industryAnchor = (href: string) => `industry-${href.split("/").pop()}`;
@@ -12,10 +12,6 @@ export const industries: { name: string; href: string; body: string; image?: { s
   {
     name: "Healthcare",
     href: "/industries/healthcare",
-    image: {
-      src: "/images/doctor-greeting-patients-clinic.jpg",
-      alt: "Doctor shaking hands with an older couple at a clinic desk",
-    },
     body: "Patients call about appointments, billing and refills while your front desk is checking people in. Send each call to the right person, and choose what callers hear when the office is closed.",
   },
   {

@@ -1,4 +1,5 @@
 import type { Faq } from "./faq";
+import { pickFaqs } from "./faq-pick";
 import { plans } from "./plans";
 
 // Copy for the Hosted VoIP PBX page. Plan facts match src/content/plans.ts.
@@ -107,6 +108,74 @@ export const pbxComparison: { topic: string; onSite: string; hosted: string }[] 
   },
 ];
 
+// How a hosted PBX carries a call, in order.
+export const pbxPath: { title: string; body: string }[] = [
+  {
+    title: "A customer dials your number",
+    body: "The call reaches our cloud phone system instead of a box in your office.",
+  },
+  {
+    title: "Your rules decide where it goes",
+    body: "Business hours, the auto attendant, ring groups and queues send it to the right person or team.",
+  },
+  {
+    title: "It travels over your internet",
+    body: "The call’s audio is sent as data over your internet connection, in real time.",
+  },
+  {
+    title: "Your team answers anywhere",
+    body: "It rings on a desk phone, the mobile app or the web phone. Outgoing calls take the same path in reverse.",
+  },
+];
+
+// Why businesses move to a hosted PBX. Each one matches a plan fact.
+export const pbxReasons: { title: string; body: string }[] = [
+  {
+    title: "No phone closet to look after",
+    body: "The system runs in the cloud, so there’s no PBX equipment on site to power, repair or replace.",
+  },
+  {
+    title: "Answer from anywhere",
+    body: "Every plan includes mobile apps and a web phone, and calls still show your business number.",
+  },
+  {
+    title: "Make changes yourself",
+    body: "Update menus, hours and users online in the admin portal, without waiting for a technician.",
+  },
+  {
+    title: "Grow one user at a time",
+    body: "Add a person by adding a user and a phone. You pay per user each month, not for a bigger system.",
+  },
+  {
+    title: "Connect every location",
+    body: "Offices dial each other by extension and transfer calls between sites on one system.",
+  },
+  {
+    title: "Calls keep moving",
+    body: "If your office internet goes down, calls can forward to another number, such as a cell phone.",
+  },
+];
+
+// Our switching process: configured, tested and shipped, with no install visit.
+export const pbxSwitch: { title: string; body: string }[] = [
+  {
+    title: "Review",
+    body: "Tell us how your calls should flow today. We review your numbers, users and current phones.",
+  },
+  {
+    title: "Configure",
+    body: "We build your menus, ring groups and hours, and test every phone and call route.",
+  },
+  {
+    title: "Ship",
+    body: "Your phones arrive set up and ready. Plug them in and they connect.",
+  },
+  {
+    title: "Go live",
+    body: "Your numbers move over on a date we agree with you, and we show your team the basics.",
+  },
+];
+
 export const pbxFaqs: Faq[] = [
   {
     question: "What does PBX stand for?",
@@ -117,6 +186,22 @@ export const pbxFaqs: Faq[] = [
     question: "What’s the difference between hosted PBX and on-site PBX?",
     answer:
       "An on-site PBX runs on equipment you buy and keep in your building. A hosted PBX runs in the cloud, so your office only needs internet and phones, and you pay per user each month.",
+  },
+  {
+    question: "How does a hosted PBX work?",
+    answer:
+      "Your phone system runs in the cloud. When someone calls, the system applies your rules, such as business hours and menus, then sends the call over the internet to your desk phones, the mobile app or the web phone.",
+  },
+  {
+    question: "Is a hosted PBX the same as UCaaS?",
+    answer:
+      "They’re closely related. A hosted PBX is the phone system. UCaaS adds video meetings, team chat and messaging on the same platform.",
+    link: { href: "/ucaas", label: "Learn about UCaaS" },
+  },
+  {
+    question: "What internet connection does a hosted PBX need?",
+    answer:
+      "A stable business internet connection. Plan for about 100 Kbps each way for every call happening at the same time. We’ll look at your connection before you switch.",
   },
   {
     question: "What equipment do I need for a hosted PBX?",
@@ -150,3 +235,12 @@ export const pbxFaqs: Faq[] = [
     link: { href: "/sip-trunking", label: "Learn about SIP trunking" },
   },
 ];
+
+// The five shown on the page; the FAQ page lists them all.
+export const pbxPageFaqs = pickFaqs(pbxFaqs, [
+  "How does a hosted PBX work?",
+  "What’s the difference between hosted PBX and on-site PBX?",
+  "What equipment do I need for a hosted PBX?",
+  "How much does a hosted VoIP PBX cost?",
+  "Can I keep my current phone numbers?",
+]);

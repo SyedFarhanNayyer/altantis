@@ -20,7 +20,7 @@ export const media = {
     contain: true,
   },
   cordless: {
-    src: "/images/hw-yealink-cordless-phone-base.png",
+    src: "/images/placeholder-photo.svg",
     alt: "Yealink cordless handset in its charger beside the wireless base station",
     // Product cut-out on a transparent background: show it whole, not cropped.
     contain: true,

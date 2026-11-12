@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { ButtonLink } from "@/components/ui/ButtonLink";
+import { HeroGlow } from "@/components/ui/HeroGlow";
 
 type Action = { label: string; href: string };
 
@@ -20,7 +21,8 @@ type Props = {
 // with a smaller title.
 export function PageHero({ title, body, primary, secondary, media, contents }: Props) {
   return (
-    <section aria-labelledby="hero-title" className="bg-night text-on-dark">
+    <section aria-labelledby="hero-title" className="relative isolate overflow-hidden bg-night text-on-dark">
+      <HeroGlow />
       <div className={`container-page pt-36 lg:pt-44 ${contents ? "" : "pb-16 lg:pb-24"}`}>
         <div className={media ? "grid items-center gap-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-14" : ""}>
         <div className="max-w-[48rem]">

@@ -7,7 +7,7 @@ import { ClosingCta } from "@/components/sections/ClosingCta";
 import { FaqSplit } from "@/components/sections/FaqSplit";
 import { PageHero } from "@/components/sections/PageHero";
 import { PlanRows } from "@/components/sections/PlanRows";
-import { startingPrice, voipFaqs } from "@/content/business-voip";
+import { startingPrice, voipPageFaqs } from "@/content/business-voip";
 import { faqText } from "@/content/faq";
 import { absoluteUrl, webPageSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
@@ -39,7 +39,7 @@ export default function BusinessVoipPage() {
         },
         {
           "@type": "FAQPage",
-          mainEntity: voipFaqs.map((f) => ({
+          mainEntity: voipPageFaqs.map((f) => ({
             "@type": "Question",
             name: f.question,
             acceptedAnswer: { "@type": "Answer", text: faqText(f) },
@@ -78,8 +78,8 @@ export default function BusinessVoipPage() {
         primary={{ label: "See All Features", href: "/features" }}
         secondary={{ label: "Compare Plans", href: "/pricing#compare" }}
         image={{
-          src: "/images/hw-employee-headset-call.jpg",
-          alt: "Employee on a headset call working from a laptop and tablet",
+          src: "/images/business-voip-man-on-desk-phone-office.jpg",
+          alt: "Business owner taking a call on an IP desk phone at his office desk",
         }}
         imageSide="right"
         play
@@ -142,7 +142,7 @@ export default function BusinessVoipPage() {
             Business VoIP <span className="font-bold">questions, answered.</span>
           </>
         }
-        items={voipFaqs}
+        items={voipPageFaqs}
       />
 
       <ClosingCta image="/images/business-team-discussing-voip-plan.jpg" imagePosition="object-[center_30%]" />

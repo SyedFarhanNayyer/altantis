@@ -16,8 +16,10 @@ import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
  *   data-reveal="steps"      each [data-step] lights up as it reaches the
  *                            step line and dims again if you scroll back
  *   data-reveal="wipe"       image wipes in from its left edge; add
- *                            data-wipe-from="right" to reverse it, and
- *                            data-wipe-delay="0.1" to offset a row
+ *                            data-wipe-from="right" to reverse it,
+ *                            data-wipe-delay="0.1" to offset a row, and
+ *                            data-wipe-full to keep the whole photo in
+ *                            frame (no zoom or drift)
  *   data-reveal="route"      call-routing diagram draws itself with the
  *                            scrollbar: [data-route-row] holds a
  *                            [data-route-trunk], [data-route-branch] and
@@ -231,7 +233,7 @@ function revealSteps() {
 // keeps its own CSS hover transform.
 function revealWipe() {
   for (const el of all('[data-reveal="wipe"]')) {
-    const photo = el.firstElementChild;
+    const photo = "wipeFull" in el.dataset ? null : el.firstElementChild;
     if (photo) gsap.set(photo, { scale: 1.12 });
     if (onScreen(el)) continue;
     const fromRight = el.dataset.wipeFrom === "right";
@@ -296,7 +298,7 @@ function revealRoute() {
 // Photos move slightly slower than their frames, which reads as depth.
 function drift() {
   const targets = [
-    ...all<HTMLElement>('[data-reveal="wipe"] > img'),
+    ...all<HTMLElement>('[data-reveal="wipe"]:not([data-wipe-full]) > img'),
     ...all<HTMLElement>("[data-drift]"),
   ];
   for (const el of targets) {

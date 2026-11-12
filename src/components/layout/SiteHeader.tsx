@@ -10,12 +10,12 @@ import { MobileMenu } from "./MobileMenu";
 // for white nav text over the light sections, and goes near-solid where
 // backdrop-filter isn't supported. The blur sits on its own layer:
 // backdrop-filter on <header> itself would trap the fixed mobile menu.
-export function SiteHeader() {
+export function SiteHeader({ solid = false }: { solid?: boolean }) {
   return (
-    <header data-header className="group fixed inset-x-0 top-0 z-40">
+    <header data-header data-solid={solid || undefined} className="group fixed inset-x-0 top-0 z-40">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 border-b border-on-dark/10 bg-night/65 opacity-0 backdrop-blur-xl backdrop-saturate-150 supports-[not(backdrop-filter:blur(1px))]:bg-night/92 transition-opacity duration-500 group-data-[menu-open=true]:opacity-100 group-data-[scrolled=true]:opacity-100"
+        className="pointer-events-none absolute inset-0 -z-10 border-b border-on-dark/10 bg-night/65 opacity-0 backdrop-blur-xl backdrop-saturate-150 supports-[not(backdrop-filter:blur(1px))]:bg-night/92 transition-opacity duration-500 group-data-[menu-open=true]:opacity-100 group-data-[scrolled=true]:opacity-100 group-data-solid:bg-night group-data-solid:opacity-100"
       />
       <div className="container-page flex h-[5.75rem] items-center justify-between gap-6 transition-[height] duration-500 ease-out group-data-[scrolled=true]:h-[4.5rem] lg:gap-9 xl:gap-6 2xl:gap-9">
         <Link

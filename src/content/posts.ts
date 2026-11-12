@@ -173,7 +173,7 @@ const posts: Post[] = [
     summary: "A step-by-step look at a planned changeover, from proposal to go-live.",
     category: "Switching",
     date: "2026-08-12",
-    image: "/images/atlantis-team-reviewing-screen.png",
+    image: "/images/placeholder-photo.svg",
     alt: "Atlantis team planning a business phone system changeover",
     position: "object-center",
     body: [

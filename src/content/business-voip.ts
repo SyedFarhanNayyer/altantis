@@ -1,4 +1,5 @@
 import type { Faq } from "./faq";
+import { pickFaqs } from "./faq-pick";
 import { plans } from "./plans";
 
 // Copy for the Business VoIP page. Plan facts match src/content/plans.ts.
@@ -125,3 +126,12 @@ export const voipFaqs: Faq[] = [
     link: { href: "/hosted-voip-pbx", label: "Learn about hosted PBX" },
   },
 ];
+
+// The five shown on the page; the FAQ page lists them all.
+export const voipPageFaqs = pickFaqs(voipFaqs, [
+  "Is VoIP a good fit for a small business?",
+  "How much does business VoIP cost?",
+  "How much internet speed do I need for VoIP?",
+  "What happens if my internet goes down?",
+  "Can I keep my current business phone number?",
+]);

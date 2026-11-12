@@ -142,7 +142,9 @@ const support: Faq = {
 };
 
 // Business Phone Systems page FAQ section.
-export const faqs: Faq[] = [whatIs, cost, downtime, keepNumbers, timeline, mobile, outage, growth, support];
+// The five shown on the Business Phone Systems and Pricing pages. The FAQ
+// page lists every question.
+export const faqs: Faq[] = [cost, downtime, keepNumbers, mobile, outage];
 
 // FAQ page, grouped by topic. `id` is the in-page anchor for each group.
 export const faqGroups: { id: string; title: string; items: Faq[] }[] = [
@@ -187,7 +189,7 @@ export const faqGroups: { id: string; title: string; items: Faq[] }[] = [
       {
         question: "Which phones do you offer?",
         answer:
-          "We supply Yealink desk, cordless and conference phones. Every phone is configured to your specifications and tested before it ships to you.",
+          "We supply Grandstream and Yealink desk and cordless phones. Every phone is configured to your specifications and tested before it ships to you.",
       },
       {
         question: "How is 911 handled?",
